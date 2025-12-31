@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { partners, clients } from "../data/products";
+import { partners, schoolClients, webClients } from "../data/products";
 ---
 
 <Layout
@@ -304,7 +304,136 @@ import { partners, clients } from "../data/products";
     </div>
   </section>
 
-  <!-- Final CTA -->
+  <!-- School Network Map -->
+  <section class="py-40 bg-black/20 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div class="reveal-on-scroll">
+          <span
+            class="text-syntax-emerald font-black tracking-[0.4em] uppercase block mb-6 text-xs"
+            >Jejaring Nasional</span
+          >
+          <h2
+            class="text-4xl md:text-5xl font-black text-white tracking-tighter mb-8 leading-tight"
+          >
+            Kehadiran Kami di <br />
+            <span class="gradient-text">Seluruh Indonesia</span>
+          </h2>
+          <p class="text-gray-400 text-lg mb-12">
+            Sistem keuangan kami telah dipercaya oleh berbagai institusi
+            pendidikan untuk mengelola ekosistem finansial mereka secara
+            transparan.
+          </p>
+
+          <div class="space-y-4">
+            {
+              schoolClients.map((school, idx) => (
+                <div
+                  class="flex items-center space-x-4 p-4 glass rounded-2xl border border-white/5 hover:border-syntax-emerald/30 transition-all group"
+                  style={`transition-delay: ${idx * 100}ms;`}
+                >
+                  <div class="w-10 h-10 rounded-xl bg-syntax-emerald/10 flex items-center justify-center text-syntax-emerald group-hover:bg-syntax-emerald group-hover:text-white transition-all">
+                    <svg
+                      class="w-5 h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <>
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                        />
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="text-white font-bold text-sm">{school.name}</h4>
+                    <p class="text-gray-500 text-xs uppercase tracking-widest">
+                      {school.city}
+                    </p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="relative reveal-on-scroll" style="transition-delay: 300ms;">
+          <div
+            class="absolute -inset-10 bg-syntax-emerald/10 blur-[120px] rounded-full opacity-50"
+          >
+          </div>
+          <div
+            class="relative glass aspect-square rounded-[4rem] border border-white/10 overflow-hidden shadow-3xl"
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15865.23456789!2d106.8451!3d-6.2088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e45678901b%3A0x678901234567890a!2sJakarta%2C%20Indonesia!5e0!3m2!1sen!2sid!4v1620000000000!5m2!1sen!2sid"
+              class="w-full h-full grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-1000"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+            >
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Website Client Portfolio -->
+  <section class="py-40 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-24 reveal-on-scroll">
+        <h2 class="text-4xl font-black text-white tracking-tighter mb-6">
+          Portofolio <span class="gradient-text">Website Kustom</span>
+        </h2>
+        <p class="text-gray-400 text-lg">
+          Solusi digital kreatif yang dirancang untuk memperkuat identitas brand
+          klien kami di dunia maya.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {
+          webClients.map((client, idx) => (
+            <div
+              class="group glass p-8 rounded-[3rem] border border-white/5 hover:border-syntax-accent/40 transition-all reveal-on-scroll"
+              style={`transition-delay: ${idx * 150}ms;`}
+            >
+              <div class="aspect-video bg-white/5 rounded-2xl mb-8 overflow-hidden relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-syntax-accent/20 to-transparent" />
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 backdrop-blur-sm">
+                  <span class="text-white font-black text-sm tracking-widest uppercase">
+                    Lihat Detail
+                  </span>
+                </div>
+              </div>
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-white font-black text-xl leading-tight">
+                  {client.name}
+                </h3>
+                <span class="text-[10px] bg-white/10 px-3 py-1 rounded-full text-gray-400 font-bold">
+                  {client.year}
+                </span>
+              </div>
+              <p class="text-gray-500 font-bold text-xs uppercase tracking-widest">
+                {client.category}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
   <section class="py-40 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div

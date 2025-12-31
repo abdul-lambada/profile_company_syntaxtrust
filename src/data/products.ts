@@ -54,10 +54,18 @@ export const partners = [
     { name: 'Meta', logo: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg' },
 ];
 
-export const clients = [
-    { name: 'TechCorp', logo: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Logo_TV_2015.svg' },
-    { name: 'Finansialku', logo: 'https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg' },
-    { name: 'EduSmart', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/42/Adobe_Systems_logo_and_wordmark.svg' },
-    { name: 'GlobalLogistics', logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/FedEx_Corporation_-_Logo.svg' },
-    { name: 'HealthPlus', logo: 'https://upload.wikimedia.org/wikipedia/commons/1/1b/eBay_logo.svg' },
+export const schoolClients = [
+    { name: 'SMK Negeri 1 Jakarta', city: 'Jakarta Pusat', coords: { lat: -6.1751, lng: 106.8650 } },
+    { name: 'SMA Al-Azhar', city: 'Bekasi', coords: { lat: -6.2383, lng: 106.9756 } },
+    { name: 'SMP Bintang Bangsa', city: 'Bandung', coords: { lat: -6.9175, lng: 107.6191 } },
+    { name: 'Yayasan Pendidikan Mulia', city: 'Surabaya', coords: { lat: -7.2575, lng: 112.7521 } },
+    { name: 'Pesantren Modern Risalah', city: 'Bogor', coords: { lat: -6.5971, lng: 106.7949 } },
+];
+
+export const webClients = [
+    { name: 'IndoFurniture Store', category: 'E-Commerce', year: '2025' },
+    { name: 'Logistik Pro Express', category: 'Platform Logistik', year: '2024' },
+    { name: 'Klinik Sehat Utama', category: 'Company Profile', year: '2025' },
+    { name: 'LMS Cerdas Digital', category: 'E-Learning', year: '2024' },
+    { name: 'Resto Gourmet Nusantara', category: 'Booking System', year: '2025' },
 ];
