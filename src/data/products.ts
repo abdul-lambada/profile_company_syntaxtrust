@@ -1,49 +1,49 @@
 export interface Product {
     id: string;
     name: string;
-    category: 'Basic' | 'Pro' | 'Enterprise';
+    category: string;
     price: string;
     description: string;
     features: string[];
     guideFile: string;
     youtubeId: string;
-    icon: string;
 }
 
 export const products: Product[] = [
     {
-        id: 'syntax-lite',
-        name: 'Syntax Lite',
-        category: 'Basic',
-        price: 'Rp 499.000',
-        description: 'Solusi manajemen data sederhana untuk startup dan UMKM.',
-        features: ['Manajemen Stok', 'Laporan Harian', 'Akses 1 User', 'Support Email'],
-        guideFile: '/docs/syntax-lite-guide.pdf',
-        youtubeId: 'dQw4w9WgXcQ',
-        icon: 'Terminal',
-    },
-    {
-        id: 'syntax-pro',
-        name: 'Syntax Pro',
-        category: 'Pro',
-        price: 'Rp 1.499.000',
-        description: 'Fitur lengkap untuk bisnis yang sedang berkembang pesat.',
-        features: ['Multi-User Access', 'Analitik Real-time', 'Integrasi API', 'Priority Support'],
-        guideFile: '/docs/syntax-pro-manual.pdf',
-        youtubeId: 'dQw4w9WgXcQ',
-        icon: 'Cpu',
-    },
-    {
-        id: 'syntax-enterprise',
-        name: 'Syntax Enterprise',
+        id: 'sik-sekolah',
+        name: 'Sistem Informasi Keuangan Sekolah',
         category: 'Enterprise',
-        price: 'Custom',
-        description: 'Infrastruktur kustom untuk kebutuhan perusahaan skala besar.',
-        features: ['Kustomisasi Penuh', 'Dedicted Server', 'SLA 99.9%', 'On-site Training'],
-        guideFile: '/docs/enterprise-solution.pdf',
-        youtubeId: 'dQw4w9WgXcQ',
-        icon: 'ShieldCheck',
+        price: 'Rp 15jt',
+        description: 'Solusi manajemen keuangan terpadu untuk semua jenjang pendidikan (SD, SMP, SMA/K). Integrasi SPP, Tabungan, dan Pelaporan BOS.',
+        features: [
+            'Manajemen SPP Otomatis',
+            'Sistem Tabungan Siswa',
+            'Laporan Real-time untuk Yayasan',
+            'Integrasi Pembayaran Digital',
+            'Dashboard Multi-user (Admin & Guru)',
+            'Backup Data Terenkripsi'
+        ],
+        guideFile: '/guides/sik-sekolah.pdf',
+        youtubeId: 'dQw4w9WgXcQ' // Placeholder
     },
+    {
+        id: 'custom-web',
+        name: 'Jasa Pembuatan Website Kustom',
+        category: 'Creative',
+        price: 'Nego',
+        description: 'Pengembangan website eksklusif yang dirancang khusus untuk profil perusahaan, platform e-learning, atau aplikasi web kompleks.',
+        features: [
+            'Desain UI/UX Eksklusif',
+            'Teknologi Modern (Astro/Next.js)',
+            'Optimasi SEO & Performa',
+            'Full Responsive di Semua Perangkat',
+            'Gratis Maintenance 3 Bulan',
+            'Konsultasi Arsitektur Kode'
+        ],
+        guideFile: '/guides/custom-web.pdf',
+        youtubeId: 'dQw4w9WgXcQ' // Placeholder
+    }
 ];
 
 export const partners = [
