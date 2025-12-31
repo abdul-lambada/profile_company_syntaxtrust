@@ -1,18 +1,25 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { webClients } from "../../data/products";
 
-export function getStaticPaths() {
-    return webClients.map((client) => ({
+export async function getStaticPaths() {
+    const response = await fetch(
+        "http://localhost/profile_syntaxtrust/api/data.php?aksi=klien_web",
+    ).catch(() => null);
+    const webClients = response ? await response.json() : [];
+
+    return webClients.map((client: any) => ({
         params: { id: client.id },
         props: { client },
     }));
+}
+interface Props {
+    client: any;
 }
 
 const { client } = Astro.props;
 ---
 
-<Layout title={`${client.name} - Studi Kasus`}>
+<Layout title={`${client.nama} - Studi Kasus`}>
     <section class="pt-48 pb-20 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <a
@@ -37,17 +44,17 @@ const { client } = Astro.props;
                 <div>
                     <span
                         class="text-syntax-emerald font-black tracking-[0.4em] uppercase block mb-6 text-xs"
-                        >{client.category} • {client.year}</span
+                        >{client.kategori} • {client.tahun}</span
                     >
                     <h1
                         class="text-5xl md:text-7xl font-black mb-10 tracking-tighter leading-tight"
                     >
-                        Proyek <span class="gradient-text">{client.name}</span>
+                        Proyek <span class="gradient-text">{client.nama}</span>
                     </h1>
                     <p
                         class="text-gray-400 text-xl leading-relaxed font-medium mb-12"
                     >
-                        {client.description}
+                        {client.deskripsi}
                     </p>
                     <a
                         href={client.url}
@@ -82,7 +89,7 @@ const { client } = Astro.props;
                         </div>
                         <img
                             src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200"
-                            alt={client.name}
+                            alt={client.nama}
                             class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-[3s]"
                         />
                     </div>
@@ -103,7 +110,7 @@ const { client } = Astro.props;
                         Tantangan
                     </h3>
                     <p class="text-gray-400 text-lg leading-relaxed">
-                        {client.challenge}
+                        {client.tantangan}
                     </p>
                 </div>
                 <div class="glass p-12 rounded-[3rem] border border-white/5">
@@ -116,7 +123,7 @@ const { client } = Astro.props;
                         Solusi Kami
                     </h3>
                     <p class="text-gray-400 text-lg leading-relaxed">
-                        {client.solution}
+                        {client.solusi}
                     </p>
                 </div>
             </div>

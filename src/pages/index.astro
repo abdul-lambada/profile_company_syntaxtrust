@@ -1,6 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { partners, schoolClients, webClients } from "../data/products";
+import { partners } from "../data/products";
+
+// Ambil data dinamis dari Backend PHP
+const responseSekolah = await fetch(
+  "http://localhost/profile_syntaxtrust/api/data.php?aksi=sekolah",
+).catch(() => null);
+const schoolClients: any[] = responseSekolah
+  ? await responseSekolah.json()
+  : [];
+
+const responseWeb = await fetch(
+  "http://localhost/profile_syntaxtrust/api/data.php?aksi=klien_web",
+).catch(() => null);
+const webClients: any[] = responseWeb ? await responseWeb.json() : [];
 ---
 
 <Layout
@@ -327,7 +340,7 @@ import { partners, schoolClients, webClients } from "../data/products";
 
           <div class="space-y-4">
             {
-              schoolClients.map((school, idx) => (
+              schoolClients.map((school: any, idx: number) => (
                 <div
                   class="flex items-center space-x-4 p-4 glass rounded-2xl border border-white/5 hover:border-syntax-emerald/30 transition-all group"
                   style={`transition-delay: ${idx * 100}ms;`}
@@ -356,9 +369,9 @@ import { partners, schoolClients, webClients } from "../data/products";
                     </svg>
                   </div>
                   <div>
-                    <h4 class="text-white font-bold text-sm">{school.name}</h4>
+                    <h4 class="text-white font-bold text-sm">{school.nama}</h4>
                     <p class="text-gray-500 text-xs uppercase tracking-widest">
-                      {school.city}
+                      {school.kota}
                     </p>
                   </div>
                 </div>
@@ -404,7 +417,7 @@ import { partners, schoolClients, webClients } from "../data/products";
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {
-          webClients.map((client, idx) => (
+          webClients.map((client: any, idx: number) => (
             <a
               href={`/portofolio/${client.id}`}
               class="group glass p-8 rounded-[3rem] border border-white/5 hover:border-syntax-accent/40 transition-all reveal-on-scroll"
@@ -420,14 +433,14 @@ import { partners, schoolClients, webClients } from "../data/products";
               </div>
               <div class="flex justify-between items-start mb-2">
                 <h3 class="text-white font-black text-xl leading-tight">
-                  {client.name}
+                  {client.nama}
                 </h3>
                 <span class="text-[10px] bg-white/10 px-3 py-1 rounded-full text-gray-400 font-bold">
-                  {client.year}
+                  {client.tahun}
                 </span>
               </div>
               <p class="text-gray-500 font-bold text-xs uppercase tracking-widest">
-                {client.category}
+                {client.kategori}
               </p>
             </a>
           ))
