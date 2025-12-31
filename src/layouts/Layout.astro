@@ -54,12 +54,17 @@ const { title } = Astro.props;
             <div class="hidden md:block">
               <div class="flex items-center space-x-1">
                 {
-                  ["Tentang", "Harga", "Panduan"].map((item) => (
+                  [
+                    { name: "Home", path: "/" },
+                    { name: "Tentang", path: "/tentang" },
+                    { name: "Layanan", path: "/layanan" },
+                    { name: "Panduan", path: "/panduan" },
+                  ].map((item) => (
                     <a
-                      href={`#${item.toLowerCase()}`}
+                      href={item.path}
                       class="text-gray-400 hover:text-white px-5 py-2 rounded-xl text-sm font-bold transition-all hover:bg-white/5"
                     >
-                      {item}
+                      {item.name}
                     </a>
                   ))
                 }
@@ -107,12 +112,17 @@ const { title } = Astro.props;
           class="glass rounded-[2rem] border border-white/10 p-6 space-y-4 shadow-2xl"
         >
           {
-            ["Tentang", "Harga", "Panduan"].map((item) => (
+            [
+              { name: "Home", path: "/" },
+              { name: "Tentang", path: "/tentang" },
+              { name: "Layanan", path: "/layanan" },
+              { name: "Panduan", path: "/panduan" },
+            ].map((item) => (
               <a
-                href={`#${item.toLowerCase()}`}
+                href={item.path}
                 class="block text-gray-300 hover:text-white px-4 py-3 rounded-2xl text-lg font-bold hover:bg-white/5 transition-all"
               >
-                {item}
+                {item.name}
               </a>
             ))
           }

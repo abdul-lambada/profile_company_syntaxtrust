@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { products } from '../data/products';
+---
+
+<Layout title="Pusat Panduan">
+  <!-- Header Section -->
+  <section class="pt-48 pb-20 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-4xl mx-auto">
+        <span class="text-syntax-emerald font-black tracking-[0.4em] uppercase block mb-6 text-xs reveal-on-scroll">Knowledge Base</span>
+        <h1 class="text-6xl md:text-8xl font-black mb-10 tracking-tighter leading-tight reveal-on-scroll">
+          Pelajari <span class="gradient-text">Ekosistem</span> Kami
+        </h1>
+        <p class="text-gray-400 text-xl md:text-2xl leading-relaxed font-medium reveal-on-scroll" style="transition-delay: 200ms;">
+          Panduan komprehensif untuk membantu Anda menguasai setiap fitur dan kapabilitas produk SyntaxTrust.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resource List Section -->
+  <section class="py-32 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-14">
+        {products.map((product, idx) => (
+          <div class="group relative reveal-on-scroll" style={`transition-delay: ${idx * 200}ms;`}>
+             <div class="absolute -inset-10 bg-syntax-accent/5 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+             <div class="relative glass rounded-[4rem] border border-white/10 p-2 overflow-hidden hover:border-syntax-emerald/30 transition-all duration-700">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
+                   <!-- Info Content -->
+                   <div class="lg:col-span-6 p-12 lg:p-20 order-2 lg:order-1 flex flex-col justify-center">
+                      <div class="flex items-center space-x-6 mb-10">
+                         <div class="w-16 h-16 rounded-[2rem] bg-syntax-emerald/10 flex items-center justify-center text-syntax-emerald border border-syntax-emerald/20 group-hover:rotate-12 transition-transform">
+                            <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                         </div>
+                         <div>
+                            <span class="text-[10px] font-black text-syntax-emerald uppercase tracking-[0.3em] mb-1 block">EDUKASI {product.category}</span>
+                            <h3 class="text-4xl font-black tracking-tighter text-white">MASTERY {product.name}</h3>
+                         </div>
+                      </div>
+                      
+                      <p class="text-gray-400 mb-12 text-xl leading-relaxed italic font-medium">
+                        "Eksplorasi mendalam arsitektur {product.name} untuk mengoptimalkan alur kerja digital perusahaan Anda secara presisi."
+                      </p>
+
+                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <a href={product.guideFile} class="flex items-center space-x-5 glass hover:bg-white/10 p-6 rounded-3xl border border-white/5 transition-all group/link shadow-xl">
+                          <div class="w-12 h-12 rounded-2xl bg-red-500/10 flex items-center justify-center text-red-500 group-hover/link:bg-red-500 group-hover/link:text-white transition-all">
+                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2a2 2 0 00-2 2v16a2 2 0 002 2h10a2 2 0 002-2V4a2 2 0 00-2-2H7zm0 2h10v16H7V4zm2 4v2h6V8H9zm0 4v2h6v-2H9zm0 4v2h4v-2H9z" /></svg>
+                          </div>
+                          <div>
+                            <div class="text-sm font-black text-white">Panduan Teknis</div>
+                            <div class="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">Dokumen PDF</div>
+                          </div>
+                        </a>
+
+                        <a href={`https://youtube.com/watch?v=${product.youtubeId}`} target="_blank" class="flex items-center space-x-5 glass hover:bg-white/10 p-6 rounded-3xl border border-white/5 transition-all group/link shadow-xl">
+                          <div class="w-12 h-12 rounded-2xl bg-red-600/10 flex items-center justify-center text-red-600 group-hover/link:bg-red-600 group-hover/link:text-white transition-all">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 4-8 4z" /></svg>
+                          </div>
+                          <div>
+                            <div class="text-sm font-black text-white">Kursus Video</div>
+                            <div class="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">Tutorial 4K</div>
+                          </div>
+                        </a>
+                      </div>
+                   </div>
+
+                   <!-- Visual Preview -->
+                   <div class="lg:col-span-6 min-h-[400px] lg:min-h-0 order-1 lg:order-2 overflow-hidden">
+                      <div class="w-full h-full relative group/video">
+                         <div class="absolute inset-0 bg-syntax-accent/40 z-10 group-hover/video:bg-transparent transition-colors duration-700"></div>
+                         <img src={`https://img.youtube.com/vi/${product.youtubeId}/maxresdefault.jpg`} alt="Tutorial" class="w-full h-full object-cover group-hover/video:scale-110 transition-transform duration-[2s]" />
+                         <div class="absolute inset-0 z-20 flex items-center justify-center">
+                            <button class="w-24 h-24 rounded-full glass border border-white/20 flex items-center justify-center text-white transform group-hover/video:scale-125 transition-transform duration-500 shadow-3xl">
+                               <svg class="w-10 h-10 ml-1 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Support CTA -->
+  <section class="py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-black text-white mb-8 tracking-tighter">Masih Memiliki Pertanyaan?</h2>
+      <p class="text-gray-400 text-lg mb-12">Tim dukungan teknis kami siap membantu Anda 24/7 melalui berbagai saluran komunikasi.</p>
+      <div class="flex flex-wrap justify-center gap-6">
+         <a href="#" class="px-8 py-4 glass rounded-2xl font-bold hover:bg-white/5 transition-all border border-white/10 text-white">Hubungi Support</a>
+         <a href="#" class="px-8 py-4 glass rounded-2xl font-bold hover:bg-white/5 transition-all border border-white/10 text-white">Komunitas</a>
+      </div>
+    </div>
+  </section>
+</Layout>
