@@ -405,7 +405,8 @@ import { partners, schoolClients, webClients } from "../data/products";
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {
           webClients.map((client, idx) => (
-            <div
+            <a
+              href={`/portofolio/${client.id}`}
               class="group glass p-8 rounded-[3rem] border border-white/5 hover:border-syntax-accent/40 transition-all reveal-on-scroll"
               style={`transition-delay: ${idx * 150}ms;`}
             >
@@ -413,7 +414,7 @@ import { partners, schoolClients, webClients } from "../data/products";
                 <div class="absolute inset-0 bg-gradient-to-br from-syntax-accent/20 to-transparent" />
                 <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 backdrop-blur-sm">
                   <span class="text-white font-black text-sm tracking-widest uppercase">
-                    Lihat Detail
+                    Lihat Studi Kasus
                   </span>
                 </div>
               </div>
@@ -428,7 +429,7 @@ import { partners, schoolClients, webClients } from "../data/products";
               <p class="text-gray-500 font-bold text-xs uppercase tracking-widest">
                 {client.category}
               </p>
-            </div>
+            </a>
           ))
         }
       </div>

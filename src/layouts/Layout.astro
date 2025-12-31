@@ -19,7 +19,7 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/jpeg" href="/logo.jpg" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO Meta Tags -->
@@ -46,6 +46,28 @@ const {
   <body
     class="bg-syntax-dark selection:bg-syntax-accent/30 selection:text-white"
   >
+    <!-- WhatsApp Floating Button -->
+    <a
+      href="https://wa.me/6281234567890"
+      target="_blank"
+      class="fixed bottom-8 left-8 z-[100] group"
+      aria-label="Chat WhatsApp"
+    >
+      <div
+        class="absolute -inset-4 bg-green-500/20 rounded-full blur-xl group-hover:bg-green-500/40 transition-colors animate-pulse"
+      >
+      </div>
+      <div
+        class="relative w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 group-hover:-rotate-12 transition-all"
+      >
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.29-4.171c1.533.913 3.391 1.396 5.282 1.397 5.239 0 9.503-4.263 9.505-9.504.001-2.541-.99-4.93-2.791-6.731-1.801-1.802-4.184-2.795-6.724-2.796-5.245 0-9.503 4.263-9.506 9.505-.001 1.963.513 3.88 1.483 5.511l-1.01 3.687 3.761-.987zm11.389-5.408c-.191-.096-1.127-.557-1.302-.622-.174-.064-.3-.096-.426.096-.126.192-.489.622-.599.749-.11.127-.221.144-.412.048-.191-.096-.803-.297-1.53-.945-.566-.505-.948-1.129-1.059-1.32-.11-.192-.012-.296.084-.391.087-.085.191-.223.287-.335.095-.112.127-.191.191-.319.064-.128.032-.24-.016-.336-.048-.096-.426-1.025-.584-1.405-.154-.369-.304-.319-.426-.325l-.364-.006c-.127 0-.317.048-.483.223-.166.176-.634.622-.634 1.516 0 .894.65 1.756.741 1.884.091.127 1.277 1.949 3.094 2.733.432.187.769.298 1.031.382.433.137.827.117 1.139.07.348-.053 1.127-.462 1.285-.908.158-.447.158-.83.11-.908-.047-.079-.174-.127-.365-.223z"
+          ></path></svg
+        >
+      </div>
+    </a>
+
     <!-- Navigation -->
     <nav
       id="navbar"
@@ -92,7 +114,8 @@ const {
                 }
                 <div class="w-px h-6 bg-white/10 mx-4"></div>
                 <a
-                  href="#"
+                  href="https://wa.me/6281234567890"
+                  target="_blank"
                   class="bg-syntax-accent hover:bg-syntax-accent-light text-white px-7 py-3 rounded-2xl text-sm font-black transition-all shadow-xl shadow-syntax-accent/30 hover:scale-105 active:scale-95"
                 >
                   Hubungi Kami
@@ -149,7 +172,8 @@ const {
             ))
           }
           <a
-            href="#"
+            href="https://wa.me/6281234567890"
+            target="_blank"
             class="block w-full bg-syntax-accent text-white text-center py-4 rounded-2xl font-black shadow-lg"
           >
             Hubungi Kami
@@ -158,137 +182,124 @@ const {
       </div>
     </nav>
 
-    <main>
+    <main class="min-h-screen">
       <slot />
     </main>
 
-    <footer class="bg-black py-24 border-t border-white/5">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
-          <div class="lg:col-span-5">
-            <div class="flex items-center space-x-3 mb-8">
+    <!-- Footer Content -->
+    <footer
+      class="pt-32 pb-16 relative overflow-hidden border-t border-white/5 bg-black"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-24">
+          <div class="md:col-span-4 space-y-8">
+            <a href="/" class="flex items-center space-x-4">
               <img
                 src="/logo.jpg"
-                alt="SyntaxTrust Logo"
-                class="w-10 h-10 rounded-lg object-contain"
+                alt="Logo"
+                class="w-12 h-12 rounded-2xl object-cover"
               />
-              <span class="text-2xl font-black text-white tracking-tighter"
-                >SyntaxTrust</span
+              <span class="text-2xl font-black text-white tracking-widest"
+                >Syntax<span class="text-syntax-emerald">Trust</span></span
               >
-            </div>
-            <p class="text-gray-400 text-lg leading-relaxed mb-10 max-w-md">
-              Membangun masa depan digital dengan integritas kode dan inovasi
-              tanpa batas. Kami menghadirkan solusi IT premium yang dirancang
-              untuk performa tinggi.
+            </a>
+            <p class="text-gray-500 font-medium leading-relaxed">
+              Membangun masa depan digital Indonesia melalui solusi IT yang
+              presisi dan visioner.
             </p>
-            <div class="flex space-x-4">
-              {
-                ["twitter", "github", "linkedin"].map((social) => (
+          </div>
+
+          <div class="md:col-span-4 grid grid-cols-2 gap-8">
+            <div>
+              <h4
+                class="text-white font-black text-xs uppercase tracking-[0.3em] mb-8"
+              >
+                Navigasi
+              </h4>
+              <ul class="space-y-4">
+                <li>
                   <a
-                    href="#"
-                    class="w-12 h-12 rounded-2xl glass flex items-center justify-center text-gray-400 hover:text-syntax-accent hover:border-syntax-accent/50 transition-all"
+                    href="/"
+                    class="text-gray-500 hover:text-white transition-colors font-bold text-sm"
+                    >Home</a
                   >
-                    <span class="sr-only">{social}</span>
-                    <div class="w-5 h-5 bg-current mask-icon" />
-                  </a>
-                ))
-              }
+                </li>
+                <li>
+                  <a
+                    href="/tentang"
+                    class="text-gray-500 hover:text-white transition-colors font-bold text-sm"
+                    >Tentang</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/layanan"
+                    class="text-gray-500 hover:text-white transition-colors font-bold text-sm"
+                    >Layanan</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4
+                class="text-white font-black text-xs uppercase tracking-[0.3em] mb-8"
+              >
+                Produk
+              </h4>
+              <ul class="space-y-4">
+                <li>
+                  <a
+                    href="/layanan"
+                    class="text-gray-500 hover:text-white transition-colors font-bold text-sm"
+                    >Sistem Keuangan</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/layanan"
+                    class="text-gray-500 hover:text-white transition-colors font-bold text-sm"
+                    >Custom Web</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/panduan"
+                    class="text-gray-500 hover:text-white transition-colors font-bold text-sm"
+                    >Panduan</a
+                  >
+                </li>
+              </ul>
             </div>
           </div>
 
-          <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-12">
-            <div>
-              <h4
-                class="text-white font-black uppercase tracking-widest text-xs mb-8"
+          <div class="md:col-span-4">
+            <h4
+              class="text-white font-black text-xs uppercase tracking-[0.3em] mb-8"
+            >
+              Lokasi Kantor
+            </h4>
+            <div
+              class="glass p-1 rounded-3xl border border-white/10 overflow-hidden aspect-video relative group"
+            >
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2917392!2d106.8166!3d-6.2297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTMnNDYuOSJTIDEwNsKwNDknMDAuMCJF!5e0!3m2!1sen!2sid!4v1620000000000"
+                class="w-full h-full grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
               >
-                Navigation
-              </h4>
-              <ul class="space-y-4">
-                {
-                  ["Home", "Tentang Kami", "Layanan", "Paket Harga"].map(
-                    (link) => (
-                      <li>
-                        <a
-                          href="#"
-                          class="text-gray-500 hover:text-white transition-colors font-medium"
-                        >
-                          {link}
-                        </a>
-                      </li>
-                    ),
-                  )
-                }
-              </ul>
+              </iframe>
             </div>
-            <div>
-              <h4
-                class="text-white font-black uppercase tracking-widest text-xs mb-8"
-              >
-                Support
-              </h4>
-              <ul class="space-y-4">
-                {
-                  [
-                    "Pusat Panduan",
-                    "API Docs",
-                    "Status Sistem",
-                    "Komunitas",
-                  ].map((link) => (
-                    <li>
-                      <a
-                        href="#"
-                        class="text-gray-500 hover:text-white transition-colors font-medium"
-                      >
-                        {link}
-                      </a>
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
-            <div class="col-span-2 sm:col-span-1">
-              <h4
-                class="text-white font-black uppercase tracking-widest text-xs mb-8"
-              >
-                Email Kami
-              </h4>
-              <p class="text-gray-500 mb-4 text-sm">
-                Dapatkan update terbaru dari kami.
-              </p>
-              <div class="flex">
-                <input
-                  type="email"
-                  placeholder="email@anda.com"
-                  class="bg-white/5 border border-white/10 rounded-l-xl px-4 py-2 w-full focus:outline-none focus:border-syntax-accent transition-colors text-white text-sm"
-                />
-                <button
-                  class="bg-syntax-accent text-white px-4 py-2 rounded-r-xl font-bold text-sm"
-                  >Join</button
-                >
-              </div>
-            </div>
+            <p class="mt-6 text-gray-500 text-xs font-bold leading-relaxed">
+              Sudirman Central Business District (SCBD), <br /> Jakarta Selatan, Indonesia
+            </p>
           </div>
         </div>
-
-        <div
-          class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6"
-        >
-          <p class="text-gray-500 text-sm font-medium">
+        <div class="pt-16 border-t border-white/5 text-center">
+          <p class="text-gray-600 font-bold text-xs uppercase tracking-widest">
             &copy; {new Date().getFullYear()} SyntaxTrust. Manufactured with ❤️ in
             Indonesia.
           </p>
-          <div class="flex space-x-8">
-            <a
-              href="#"
-              class="text-gray-500 hover:text-white text-xs font-bold transition-colors"
-              >Privacy Policy</a
-            >
-            <a
-              href="#"
-              class="text-gray-500 hover:text-white text-xs font-bold transition-colors"
-              >Terms of Service</a
-            >
-          </div>
         </div>
       </div>
     </footer>
@@ -307,8 +318,7 @@ const {
       >
     </button>
 
-    <script>
-      // Menu Toggle
+    <script is:inline>
       const menuToggle = document.getElementById("menu-toggle");
       const mobileMenu = document.getElementById("mobile-menu");
       const navbar = document.getElementById("navbar");
@@ -318,7 +328,6 @@ const {
         mobileMenu?.classList.toggle("hidden");
       });
 
-      // Navbar scroll effect
       window.addEventListener("scroll", () => {
         if (window.scrollY > 50) {
           navbar?.classList.add("py-4");
@@ -343,7 +352,6 @@ const {
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
 
-      // Simple Reveal Animation
       const revealItems = document.querySelectorAll(".reveal-on-scroll");
       const observer = new IntersectionObserver(
         (entries) => {
@@ -355,7 +363,6 @@ const {
         },
         { threshold: 0.1 },
       );
-
       revealItems.forEach((item) => observer.observe(item));
     </script>
   </body>

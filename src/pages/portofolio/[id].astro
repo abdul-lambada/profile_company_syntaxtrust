@@ -1,0 +1,125 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { webClients } from "../../data/products";
+
+export function getStaticPaths() {
+    return webClients.map((client) => ({
+        params: { id: client.id },
+        props: { client },
+    }));
+}
+
+const { client } = Astro.props;
+---
+
+<Layout title={`${client.name} - Studi Kasus`}>
+    <section class="pt-48 pb-20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <a
+                href="/"
+                class="inline-flex items-center text-syntax-emerald font-bold mb-12 hover:translate-x-[-10px] transition-transform"
+            >
+                <svg
+                    class="w-5 h-5 mr-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    ><path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="3"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg
+                >
+                Kembali ke Portofolio
+            </a>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div>
+                    <span
+                        class="text-syntax-emerald font-black tracking-[0.4em] uppercase block mb-6 text-xs"
+                        >{client.category} • {client.year}</span
+                    >
+                    <h1
+                        class="text-5xl md:text-7xl font-black mb-10 tracking-tighter leading-tight"
+                    >
+                        Proyek <span class="gradient-text">{client.name}</span>
+                    </h1>
+                    <p
+                        class="text-gray-400 text-xl leading-relaxed font-medium mb-12"
+                    >
+                        {client.description}
+                    </p>
+                    <a
+                        href={client.url}
+                        target="_blank"
+                        class="btn-primary inline-flex items-center"
+                    >
+                        Kunjungi Website
+                        <svg
+                            class="w-5 h-5 ml-3"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="3"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                            ></path></svg
+                        >
+                    </a>
+                </div>
+
+                <div
+                    class="glass p-2 rounded-[4rem] border border-white/10 overflow-hidden shadow-3xl"
+                >
+                    <div
+                        class="aspect-video bg-white/5 rounded-[3.8rem] relative overflow-hidden group"
+                    >
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-syntax-accent/40 to-transparent"
+                        >
+                        </div>
+                        <img
+                            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200"
+                            alt={client.name}
+                            class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-[3s]"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-black/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div class="glass p-12 rounded-[3rem] border border-white/5">
+                    <h3
+                        class="text-2xl font-black text-white mb-6 flex items-center"
+                    >
+                        <span class="w-2 h-8 bg-red-500 rounded-full mr-4"
+                        ></span>
+                        Tantangan
+                    </h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        {client.challenge}
+                    </p>
+                </div>
+                <div class="glass p-12 rounded-[3rem] border border-white/5">
+                    <h3
+                        class="text-2xl font-black text-white mb-6 flex items-center"
+                    >
+                        <span
+                            class="w-2 h-8 bg-syntax-emerald rounded-full mr-4"
+                        ></span>
+                        Solusi Kami
+                    </h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        {client.solution}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>

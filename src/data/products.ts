@@ -63,9 +63,34 @@ export const schoolClients = [
 ];
 
 export const webClients = [
-    { name: 'IndoFurniture Store', category: 'E-Commerce', year: '2025' },
-    { name: 'Logistik Pro Express', category: 'Platform Logistik', year: '2024' },
-    { name: 'Klinik Sehat Utama', category: 'Company Profile', year: '2025' },
-    { name: 'LMS Cerdas Digital', category: 'E-Learning', year: '2024' },
-    { name: 'Resto Gourmet Nusantara', category: 'Booking System', year: '2025' },
+    {
+        id: 'indo-furniture',
+        name: 'IndoFurniture Store',
+        category: 'E-Commerce',
+        year: '2025',
+        description: 'Platform e-commerce furniture mewah dengan integrasi AR (Augmented Reality).',
+        challenge: 'Menampilkan katalog ribuan produk dengan performa cepat.',
+        solution: 'Implementasi Static Site Generation (SSG) dan optimasi gambar on-the-fly.',
+        url: 'https://example.com/furniture'
+    },
+    {
+        id: 'logistik-pro',
+        name: 'Logistik Pro Express',
+        category: 'Platform Logistik',
+        year: '2024',
+        description: 'Sistem pelacakan logistik real-time untuk armada nasional.',
+        challenge: 'Sinkronisasi data GPS dari ribuan truk secara bersamaan.',
+        solution: 'Arsitektur microservices dengan WebSockets untuk update tanpa latensi.',
+        url: 'https://example.com/logistics'
+    },
+    {
+        id: 'klinik-sehat',
+        name: 'Klinik Sehat Utama',
+        category: 'Company Profile',
+        year: '2025',
+        description: 'Situs profil kesehatan dengan sistem janji temu terpadu.',
+        challenge: 'Meningkatkan konversi booking pasien online.',
+        solution: 'Desain UI yang ramah pengguna dengan alur booking 3 langkah.',
+        url: 'https://example.com/clinic'
+    },
 ];
