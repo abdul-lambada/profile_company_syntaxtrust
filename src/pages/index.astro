@@ -21,11 +21,59 @@ import { partners, clients } from "../data/products";
         class="absolute bottom-[-10%] right-[-5%] w-[55%] h-[55%] bg-syntax-emerald/10 rounded-full blur-[160px]"
       >
       </div>
+
+      <!-- 3D Spline Scene -->
+      <div class="absolute inset-0 opacity-40">
+        <script
+          type="module"
+          src="https://unpkg.com/@splinetool/viewer@1.0.28/build/spline-viewer.js"
+        ></script>
+        <spline-viewer
+          url="https://prod.spline.design/67wI9pA8Hw1-kS-2/scene.splinecode"
+          loading-anim-type="none"></spline-viewer>
+      </div>
+
       <div
         class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(#ffffff05_1px,transparent_1px)] [background-size:40px_40px] opacity-30"
       >
       </div>
     </div>
+
+    <!-- Audio Micro-interactions -->
+    <script is:inline>
+      const playClick = () => {
+        try {
+          const audioCtx = new (
+            window.AudioContext || window.webkitAudioContext
+          )();
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(
+            0.0001,
+            audioCtx.currentTime + 0.1,
+          );
+
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.1);
+        } catch (e) {
+          // Silent fail for audio
+        }
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document
+          .querySelectorAll("button, a.btn-primary, a.glass")
+          .forEach((el) => {
+            el.addEventListener("mousedown", playClick);
+          });
+      });
+    </script>
 
     <div
       class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-20"
