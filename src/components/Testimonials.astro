@@ -1,0 +1,111 @@
+---
+const testimonials = [
+    {
+        name: "Dr. H. Ahmad Subarjo",
+        role: "Kepala Sekolah SMA 1",
+        content:
+            "Sejak menggunakan SIKES, transparansi keuangan sekolah kami meningkat drastis. Wali murid sangat mengapresiasi kemudahan akses tagihan via WhatsApp.",
+        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100",
+        rating: 5,
+    },
+    {
+        name: "Ibu Ratna Sari",
+        role: "Bendahara Yayasan",
+        content:
+            "Fitur ekspor laporan sangat membantu saya dalam rapat bulanan. Data akurat, rapi, dan bisa langsung dicetak dalam format PDF standar akuntansi.",
+        avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=100",
+        rating: 5,
+    },
+    {
+        name: "Bapak Budi Santoso",
+        role: "Wali Murid",
+        content:
+            "Sangat praktis! Saya tidak perlu lagi antre di sekolah untuk membayar SPP. Cukup cek status di portal dan bukti bayar langsung terkirim otomatis.",
+        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100",
+        rating: 5,
+    },
+];
+---
+
+<section id="testimonials" class="py-24 bg-white relative overflow-hidden">
+    <!-- Decorative background -->
+    <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-[0.03] pointer-events-none"
+    >
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern
+                    id="grid"
+                    width="40"
+                    height="40"
+                    patternUnits="userSpaceOnUse"
+                >
+                    <path
+                        d="M 40 0 L 0 0 0 40"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1"></path>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)"></rect>
+        </svg>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="text-center mb-16 flex flex-col items-center">
+            <span
+                class="text-indigo-600 font-bold text-sm uppercase tracking-widest bg-indigo-50 px-4 py-1 rounded-full mb-4 inline-block"
+                >Testimonial</span
+            >
+            <h2 class="text-4xl font-bold text-slate-900 mb-4 max-w-2xl">
+                Apa Kata Mereka Tentang SIKES?
+            </h2>
+            <p class="text-slate-600 max-w-xl text-lg">
+                Kepercayaan Anda adalah prioritas kami dalam membangun sistem
+                keuangan sekolah yang akuntabel.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            {
+                testimonials.map((t) => (
+                    <div class="group p-8 rounded-[32px] bg-slate-50 border border-slate-100 hover:bg-white hover:border-emerald-500/20 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500">
+                        <div class="flex gap-1 mb-6">
+                            {[...Array(t.rating)].map(() => (
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="w-5 h-5 text-amber-400 fill-current"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                </svg>
+                            ))}
+                        </div>
+
+                        <p class="text-slate-700 italic leading-relaxed mb-8">
+                            "{t.content}"
+                        </p>
+
+                        <div class="flex items-center gap-4 border-t border-slate-200/50 pt-6">
+                            <div class="w-12 h-12 rounded-2xl overflow-hidden border-2 border-white shadow-sm shrink-0">
+                                <img
+                                    src={t.avatar}
+                                    alt={t.name}
+                                    class="w-full h-full object-cover"
+                                />
+                            </div>
+                            <div class="flex flex-col">
+                                <h4 class="font-bold text-slate-900 leading-none mb-1">
+                                    {t.name}
+                                </h4>
+                                <p class="text-[11px] text-slate-500 font-medium uppercase tracking-wider">
+                                    {t.role}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>

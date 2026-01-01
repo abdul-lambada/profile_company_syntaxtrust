@@ -2,7 +2,7 @@
 const navLinks = [
     { name: "Fitur", href: "#features" },
     { name: "Solusi", href: "#solutions" },
-    { name: "Keamanan", href: "#security" },
+    { name: "Harga", href: "#pricing" },
     { name: "Testimoni", href: "#testimonials" },
 ];
 ---
@@ -36,7 +36,7 @@ const navLinks = [
                 navLinks.map((link) => (
                     <a
                         href={link.href}
-                        class="text-sm font-semibold text-slate-600 hover:text-emerald-600 transition-colors"
+                        class="text-sm font-semibold text-slate-600 hover:text-emerald-600 transition-colors uppercase tracking-wider"
                     >
                         {link.name}
                     </a>
@@ -45,15 +45,14 @@ const navLinks = [
         </div>
 
         <div class="flex items-center gap-4">
-            <a
-                href="/login"
-                class="hidden sm:block text-sm font-bold text-slate-600 hover:text-slate-900 transition-colors"
-                >Masuk</a
+            <button
+                class="btn btn-primary text-sm px-6 py-2.5 rounded-full shadow-lg shadow-slate-900/10 active:scale-95 transition-all"
             >
-            <button class="btn btn-primary text-sm px-6 py-2.5 rounded-full">
-                Coba Demo
+                Coba Demo Gratis
             </button>
-            <button class="md:hidden text-slate-800">
+            <button
+                class="md:hidden text-slate-800 p-2 hover:bg-slate-50 rounded-xl transition-all"
+            >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6"

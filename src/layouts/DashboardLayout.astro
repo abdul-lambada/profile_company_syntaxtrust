@@ -1,0 +1,343 @@
+---
+import Layout from "./Layout.astro";
+
+interface Props {
+    title: string;
+    role?: "admin" | "staff" | "parent";
+}
+
+const { title, role = "admin" } = Astro.props;
+
+const menuItems = [
+    {
+        id: "menu-dashboard",
+        name: "Dashboard",
+        icon: "dashboard",
+        href: "/admin/dashboard",
+    },
+    {
+        id: "menu-finance",
+        name: "Keuangan",
+        icon: "wallet",
+        href: "#",
+        children: [
+            { name: "Master Tarif", href: "#" },
+            { name: "Tagihan Siswa", href: "#" },
+            { name: "Pembayaran", href: "#" },
+        ],
+    },
+    {
+        id: "menu-master",
+        name: "Data Master",
+        icon: "database",
+        href: "#",
+        children: [
+            { name: "Siswa", href: "#" },
+            { name: "Guru", href: "#" },
+        ],
+    },
+    { id: "menu-reports", name: "Laporan", icon: "chart", href: "#" },
+];
+---
+
+<Layout title={title}>
+    <div class="flex h-screen overflow-hidden bg-slate-50">
+        <!-- Sidebar -->
+        <aside
+            id="sidebar"
+            class="fixed inset-y-0 left-0 z-50 w-64 transition-transform -translate-x-full lg:static lg:translate-x-0 bg-slate-900"
+        >
+            <div class="flex flex-col h-full">
+                <div class="flex items-center justify-between px-6 py-8">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center"
+                        >
+                            <span class="text-white font-bold text-xl">S</span>
+                        </div>
+                        <div class="text-white">
+                            <p class="font-bold leading-none">SIKES</p>
+                            <p
+                                class="text-[10px] text-slate-400 uppercase tracking-widest"
+                            >
+                                Premium
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <nav
+                    class="flex-1 px-4 space-y-1 overflow-y-auto custom-scrollbar"
+                >
+                    {
+                        menuItems.map((item) => (
+                            <div id={item.id}>
+                                {item.children ? (
+                                    <div class="space-y-1">
+                                        <button class="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-slate-400 hover:bg-slate-800 hover:text-white rounded-xl transition-all group">
+                                            <span>{item.name}</span>
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="w-4 h-4"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"
+                                                />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <a
+                                        href={item.href}
+                                        class="flex items-center px-4 py-3 text-sm font-medium text-slate-400 hover:bg-slate-800 hover:text-white rounded-xl transition-all"
+                                    >
+                                        {item.name}
+                                    </a>
+                                )}
+                            </div>
+                        ))
+                    }
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header
+                class="h-20 bg-white border-b border-slate-100 flex items-center justify-between px-8 shrink-0"
+            >
+                <div class="flex items-center gap-4">
+                    <button
+                        id="open-sidebar"
+                        class="lg:hidden p-2 text-slate-500 hover:bg-slate-50 rounded-lg"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-6 h-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                    <h1 class="text-xl font-bold text-slate-800">{title}</h1>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <!-- Search Bar -->
+                    <div
+                        id="header-search"
+                        class="hidden md:flex relative group"
+                    >
+                        <input
+                            type="text"
+                            placeholder="Cari data siswa..."
+                            class="pl-10 pr-4 py-2 bg-slate-100/50 border-none rounded-xl text-sm w-64 focus:ring-2 focus:ring-emerald-500/20 focus:bg-white transition-all outline-none"
+                        />
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="absolute left-3 top-2.5 w-4 h-4 text-slate-400 group-focus-within:text-emerald-500 transition-colors"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                            ></path>
+                        </svg>
+                    </div>
+
+                    <!-- Notification Center -->
+                    <div id="notification-center" class="relative">
+                        <button
+                            id="noti-btn"
+                            class="p-2.5 text-slate-400 hover:text-slate-600 hover:bg-slate-50 rounded-xl transition-all relative group"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-6 h-6 group-hover:shake"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                                ></path>
+                            </svg>
+                            <span
+                                class="absolute top-2 right-2 w-2.5 h-2.5 bg-rose-500 border-2 border-white rounded-full"
+                            ></span>
+                        </button>
+
+                        <!-- Dropdown -->
+                        <div
+                            id="noti-dropdown"
+                            class="absolute right-0 mt-4 w-96 bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden hidden animate-fade-in z-50"
+                        >
+                            <div
+                                class="px-6 py-4 bg-slate-50 border-b border-slate-100 flex items-center justify-between"
+                            >
+                                <span class="font-bold text-slate-800"
+                                    >Notifikasi Terbaru</span
+                                >
+                                <span
+                                    class="px-2 py-0.5 bg-rose-100 text-rose-600 text-[10px] font-bold rounded-full"
+                                    >3 BARU</span
+                                >
+                            </div>
+                            <div
+                                class="max-h-[400px] overflow-y-auto custom-scrollbar"
+                            >
+                                {
+                                    [
+                                        {
+                                            name: "Ahmad Faisal",
+                                            type: "Pembayaran SPP",
+                                            time: "2 menit lalu",
+                                            status: "success",
+                                        },
+                                        {
+                                            name: "Siti Aminah",
+                                            type: "Tagihan Baru",
+                                            time: "15 menit lalu",
+                                            status: "info",
+                                        },
+                                        {
+                                            name: "Sistem",
+                                            type: "Backup Selesai",
+                                            time: "1 jam lalu",
+                                            status: "system",
+                                        },
+                                    ].map((n) => (
+                                        <div class="px-6 py-4 hover:bg-slate-50 transition-colors cursor-pointer border-b border-slate-100/50">
+                                            <div class="flex items-start gap-4">
+                                                <div
+                                                    class={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${n.status === "success" ? "bg-emerald-100 text-emerald-600" : "bg-blue-100 text-blue-600"}`}
+                                                >
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        class="w-5 h-5"
+                                                        fill="none"
+                                                        viewBox="0 0 24 24"
+                                                        stroke="currentColor"
+                                                    >
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                                        />
+                                                    </svg>
+                                                </div>
+                                                <div class="flex flex-col">
+                                                    <p class="text-sm font-bold text-slate-800">
+                                                        {n.name}
+                                                    </p>
+                                                    <p class="text-xs text-slate-500">
+                                                        {n.type}
+                                                    </p>
+                                                    <p class="text-[10px] text-slate-400 mt-1 uppercase font-bold tracking-tighter">
+                                                        {n.time}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                            <a
+                                href="#"
+                                class="block px-6 py-4 text-center text-sm font-bold text-emerald-600 hover:bg-emerald-50 transition-colors"
+                            >
+                                Lihat Semua Aktivitas
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="w-px h-8 bg-slate-100 mx-1"></div>
+
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-slate-200 overflow-hidden border border-slate-100"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100"
+                                alt="Profile"
+                            />
+                        </div>
+                        <div class="hidden xl:block">
+                            <p
+                                class="text-sm font-bold text-slate-800 leading-none"
+                            >
+                                Abdul Kholik
+                            </p>
+                            <p class="text-[10px] text-slate-400 capitalize">
+                                {role}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+                <slot />
+            </main>
+        </div>
+    </div>
+</Layout>
+
+<script>
+    // Notification Dropdown Logic
+    const btn = document.getElementById("noti-btn");
+    const dropdown = document.getElementById("noti-dropdown");
+
+    btn?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dropdown?.classList.toggle("hidden");
+    });
+
+    document.addEventListener("click", () => {
+        dropdown?.classList.add("hidden");
+    });
+
+    dropdown?.addEventListener("click", (e) => e.stopPropagation());
+</script>
+
+<style>
+    @keyframes shake {
+        0%,
+        100% {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(10deg);
+        }
+        40%,
+        80% {
+            transform: rotate(-10deg);
+        }
+    }
+    .group:hover .shake {
+        animation: shake 0.5s ease-in-out infinite;
+    }
+</style>

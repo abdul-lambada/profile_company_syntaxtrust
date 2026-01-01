@@ -1,0 +1,249 @@
+---
+import DashboardLayout from "../../layouts/DashboardLayout.astro";
+---
+
+<DashboardLayout title="Dashboard Overview">
+    <!-- Interactive Tour Trigger -->
+    <div
+        class="mb-8 p-6 bg-emerald-600 rounded-[32px] text-white flex items-center justify-between relative overflow-hidden shadow-2xl shadow-emerald-500/20"
+    >
+        <div class="absolute top-0 right-0 p-8 opacity-10">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-32 h-32"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+        </div>
+        <div class="relative z-10 flex flex-col gap-2">
+            <h2 class="text-2xl font-bold">Selamat Datang di SIKES v2.0</h2>
+            <p class="text-emerald-100 max-w-lg">
+                Sistem Anda sudah siap digunakan. Ingat untuk mencadangkan
+                database secara berkala melalui menu Backup.
+            </p>
+            <button
+                id="start-tour"
+                class="mt-4 px-6 py-3 bg-white text-emerald-600 font-bold rounded-xl hover:bg-emerald-50 transition-all active:scale-95 w-fit flex items-center gap-2"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                </svg>
+                Mulai Tur Panduan
+            </button>
+        </div>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        {
+            [
+                {
+                    label: "Total Siswa",
+                    value: "1.240",
+                    change: "+12%",
+                    color: "blue",
+                },
+                {
+                    label: "Collection Rate",
+                    value: "85.4%",
+                    change: "+5.2%",
+                    color: "emerald",
+                },
+                {
+                    label: "Piutang SPP",
+                    value: "Rp 14.5M",
+                    change: "-2%",
+                    color: "rose",
+                },
+                {
+                    label: "Income Jan",
+                    value: "Rp 560jt",
+                    change: "+18%",
+                    color: "indigo",
+                },
+            ].map((stat) => (
+                <div class="card p-6 hover:shadow-xl transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <div
+                            class={`w-12 h-12 rounded-2xl bg-${stat.color}-50 text-${stat.color}-600 flex items-center justify-center`}
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-6 h-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                            </svg>
+                        </div>
+                        <span
+                            class={`text-[10px] font-bold px-2 py-1 rounded-full ${stat.change.startsWith("+") ? "bg-emerald-50 text-emerald-600" : "bg-rose-50 text-rose-600"}`}
+                        >
+                            {stat.change}
+                        </span>
+                    </div>
+                    <p class="text-slate-500 text-sm font-medium mb-1">
+                        {stat.label}
+                    </p>
+                    <h3 class="text-2xl font-bold text-slate-900">
+                        {stat.value}
+                    </h3>
+                </div>
+            ))
+        }
+    </div>
+
+    <!-- Charts & Activities -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div
+            class="lg:col-span-2 card p-8 min-h-[400px] flex items-center justify-center relative"
+        >
+            <div
+                class="absolute inset-0 bg-slate-50/50 flex flex-col items-center justify-center text-center p-12"
+            >
+                <div
+                    class="w-20 h-20 bg-white shadow-xl rounded-full mb-6 flex items-center justify-center"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-10 h-10 text-emerald-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                        ></path>
+                    </svg>
+                </div>
+                <h4 class="text-lg font-bold text-slate-800 mb-2">
+                    Statistik Keuangan Live
+                </h4>
+                <p class="text-slate-500 text-sm">
+                    Visualisasi ApexCharts akan otomatis me-render tren tagihan
+                    dan pembayaran sekolah Anda disini secara dinamis.
+                </p>
+            </div>
+        </div>
+
+        <div class="card p-8 flex flex-col">
+            <h4 class="font-bold text-slate-800 mb-6">Aktivitas Terkini</h4>
+            <div class="space-y-6">
+                {
+                    [1, 2, 3, 4, 5].map((i) => (
+                        <div class="flex gap-4 relative">
+                            {i !== 5 && (
+                                <div class="absolute left-5 top-10 w-0.5 h-10 bg-slate-100" />
+                            )}
+                            <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 z-10">
+                                <div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse" />
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-800 font-bold leading-none mb-1">
+                                    Pembayaran SPP #{1000 + i}
+                                </p>
+                                <p class="text-xs text-slate-500 mb-1">
+                                    Diterima oleh Petugas Kasir
+                                </p>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-[10px] text-slate-400 font-mono">
+                                        14:20:05
+                                    </span>
+                                    <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-tighter">
+                                        VERIFIED
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+            <button
+                class="mt-8 w-full py-3 border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-all text-sm"
+            >
+                Lihat Semua Log
+            </button>
+        </div>
+    </div>
+</DashboardLayout>
+
+<script>
+    import { driver } from "driver.js";
+
+    const dObj = driver({
+        showProgress: true,
+        steps: [
+            {
+                element: "#sidebar",
+                popover: {
+                    title: "Navigasi Utama",
+                    description:
+                        "Gunakan sidebar untuk beralih antar modul manajemen sekolah.",
+                },
+            },
+            {
+                element: "#menu-finance",
+                popover: {
+                    title: "Menu Keuangan",
+                    description:
+                        "Atur master tarif SPP, generate tagihan, dan input pembayaran siswa disini.",
+                },
+            },
+            {
+                element: "#header-search",
+                popover: {
+                    title: "Pencarian Cepat",
+                    description:
+                        "Cari data siswa atau wali murid dengan NIK/NIS/Nama secara instan.",
+                },
+            },
+            {
+                element: "#notification-center",
+                popover: {
+                    title: "Pusat Notifikasi",
+                    description:
+                        "Pantau pembayaran real-time dan aktivitas sistem yang baru saja terjadi.",
+                },
+            },
+            {
+                element: "#start-tour",
+                popover: {
+                    title: "Bantuan & Panduan",
+                    description:
+                        "Anda bisa mengulang tur panduan ini kapan saja melalui tombol ini.",
+                },
+            },
+        ],
+    });
+
+    document.getElementById("start-tour")?.addEventListener("click", () => {
+        dObj.drive();
+    });
+</script>

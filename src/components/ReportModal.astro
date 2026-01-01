@@ -1,0 +1,364 @@
+<div
+    id="report-modal"
+    class="fixed inset-0 z-100 hidden items-center justify-center p-4"
+>
+    <!-- Backdrop -->
+    <div
+        class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
+        id="modal-backdrop"
+    >
+    </div>
+
+    <!-- Modal Content -->
+    <div
+        class="relative w-full max-w-5xl bg-white rounded-[32px] shadow-2xl overflow-hidden animate-fade-in flex flex-col max-h-[90vh]"
+    >
+        <!-- Header -->
+        <div
+            class="px-8 py-6 border-b border-slate-100 flex items-center justify-between bg-slate-50"
+        >
+            <div>
+                <h3 class="text-xl font-bold text-slate-900">
+                    Preview Laporan Keuangan
+                </h3>
+                <p class="text-sm text-slate-500">
+                    Contoh format laporan PDF standar akuntansi SIKES
+                </p>
+            </div>
+            <button
+                id="close-report-modal"
+                class="p-2 text-slate-400 hover:text-slate-600 hover:bg-white rounded-xl transition-all"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- PDF Simulator Content -->
+        <div
+            class="flex-1 overflow-y-auto p-12 bg-slate-200/50 custom-scrollbar"
+        >
+            <div
+                class="max-w-4xl mx-auto bg-white shadow-lg p-16 print:p-0 min-h-[1000px] relative"
+            >
+                <!-- School Logo & Header -->
+                <div
+                    class="flex justify-between items-start mb-12 pb-8 border-b-2 border-slate-900"
+                >
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-20 h-20 bg-slate-900 rounded-2xl flex items-center justify-center"
+                        >
+                            <span class="text-white font-bold text-4xl">S</span>
+                        </div>
+                        <div>
+                            <h1
+                                class="text-2xl font-black text-slate-900 uppercase tracking-tighter"
+                            >
+                                SMK NEGERI 1 TEKNOLOGI
+                            </h1>
+                            <p class="text-slate-500 text-sm font-medium">
+                                Jl. Pendidikan No. 123, Kota Cerdas - (021)
+                                567890
+                            </p>
+                            <p class="text-slate-500 text-xs italic">
+                                Email: support@smkn1teknologi.sch.id | Website:
+                                www.smkn1teknologi.sch.id
+                            </p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div
+                            class="inline-block px-4 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs font-bold mb-2"
+                        >
+                            ORIGINAL REPORT
+                        </div>
+                        <p class="text-[10px] text-slate-400 font-mono">
+                            DOC ID: 2026/FIN/001/JAN
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Report Title -->
+                <div class="text-center mb-10">
+                    <h2
+                        class="text-xl font-bold text-slate-900 underline decoration-slate-300 underline-offset-8 decoration-2"
+                    >
+                        LAPORAN RINCIAN PEMBAYARAN SISWA
+                    </h2>
+                </div>
+
+                <!-- Student Data -->
+                <div class="grid grid-cols-2 gap-8 mb-10 text-sm">
+                    <div class="space-y-2">
+                        <div class="flex">
+                            <span class="w-24 text-slate-500">Nama Siswa</span>
+                            <span class="font-bold">: ABDUL KHOLIK</span>
+                        </div>
+                        <div class="flex">
+                            <span class="w-24 text-slate-500">NIS / NISN</span>
+                            <span class="font-bold">: 12345 / 0012345678</span>
+                        </div>
+                        <div class="flex">
+                            <span class="w-24 text-slate-500">Kelas</span>
+                            <span class="font-bold">: XII RPL 1</span>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex">
+                            <span class="w-28 text-slate-500">Tahun Ajaran</span
+                            >
+                            <span class="font-bold">: 2025/2026</span>
+                        </div>
+                        <div class="flex">
+                            <span class="w-28 text-slate-500"
+                                >Tanggal Cetak</span
+                            >
+                            <span class="font-bold">: 01 Januari 2026</span>
+                        </div>
+                        <div class="flex text-emerald-600 font-bold">
+                            <span class="w-28 text-emerald-600">Status</span>
+                            <span class="font-bold uppercase">: LUNAS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <table class="w-full text-sm mb-12 border-collapse">
+                    <thead>
+                        <tr class="bg-slate-900 text-white leading-none">
+                            <th
+                                class="px-4 py-4 text-left font-bold rounded-tl-xl"
+                                >No</th
+                            >
+                            <th class="px-4 py-4 text-left font-bold"
+                                >Uraian Pembayaran</th
+                            >
+                            <th class="px-4 py-4 text-left font-bold"
+                                >Nominal</th
+                            >
+                            <th class="px-4 py-4 text-left font-bold"
+                                >Tgl Bayar</th
+                            >
+                            <th
+                                class="px-4 py-4 text-left font-bold rounded-tr-xl"
+                                >Keterangan</th
+                            >
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        {
+                            [
+                                {
+                                    item: "SPP Juli 2025",
+                                    price: "450.000",
+                                    date: "05/07/2025",
+                                },
+                                {
+                                    item: "SPP Agustus 2025",
+                                    price: "450.000",
+                                    date: "12/08/2025",
+                                },
+                                {
+                                    item: "SPP September 2025",
+                                    price: "450.000",
+                                    date: "08/09/2025",
+                                },
+                                {
+                                    item: "Uang Gedung (Cicilan 1)",
+                                    price: "2.500.000",
+                                    date: "15/09/2025",
+                                },
+                                {
+                                    item: "Buku & Seragam",
+                                    price: "1.200.000",
+                                    date: "20/07/2025",
+                                },
+                            ].map((row, i) => (
+                                <tr class="hover:bg-slate-50 transition-colors">
+                                    <td class="px-4 py-4 text-slate-500">
+                                        {i + 1}
+                                    </td>
+                                    <td class="px-4 py-4 font-bold text-slate-800">
+                                        {row.item}
+                                    </td>
+                                    <td class="px-4 py-4 font-mono">
+                                        Rp {row.price},00
+                                    </td>
+                                    <td class="px-4 py-4 text-slate-500 italic">
+                                        {row.date}
+                                    </td>
+                                    <td class="px-4 py-4">
+                                        <span class="px-2 py-0.5 bg-emerald-50 text-emerald-600 text-[10px] font-bold rounded">
+                                            BERHASIL
+                                        </span>
+                                    </td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr class="bg-slate-50 border-t-2 border-slate-900">
+                            <td
+                                colspan="2"
+                                class="px-4 py-5 text-right font-black text-slate-900 uppercase"
+                                >Total Dibayar :</td
+                            >
+                            <td
+                                colspan="3"
+                                class="px-4 py-5 text-left font-black text-slate-900 text-lg decoration-double underline underline-offset-4"
+                                >Rp 5.050.000,00</td
+                            >
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <!-- Signature Area -->
+                <div class="flex justify-between items-end mt-20">
+                    <div class="text-center">
+                        <p
+                            class="text-xs text-slate-400 mb-20 uppercase font-bold tracking-widest"
+                        >
+                            Wali Murid,
+                        </p>
+                        <div class="w-40 border-b border-slate-400 mx-auto">
+                        </div>
+                        <p class="text-sm font-bold mt-2 text-slate-800">
+                            ( .......................... )
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <p
+                            class="text-xs text-slate-400 uppercase font-bold tracking-widest mb-1"
+                        >
+                            Bendahara Sekolah,
+                        </p>
+                        <p class="text-xs text-slate-500 mb-16 italic">
+                            Kota Cerdas, 01 Jan 2026
+                        </p>
+                        <!-- Fake Stamp -->
+                        <div class="relative inline-block">
+                            <div
+                                class="w-32 h-32 border-4 border-emerald-500/20 rounded-full flex items-center justify-center absolute -top-24 left-1/2 -translate-x-1/2 rotate-12 -z-10 bg-emerald-500/5"
+                            >
+                                <p
+                                    class="text-emerald-500/20 font-black text-[8px] uppercase text-center leading-none"
+                                >
+                                    AUTHENTIC DOCUMENT<br />SIKES SYSTEM
+                                </p>
+                            </div>
+                            <div class="w-40 border-b border-slate-400 mx-auto">
+                            </div>
+                            <p
+                                class="text-sm font-bold mt-2 text-slate-900 leading-none"
+                            >
+                                SYAIFULLAH, S.E
+                            </p>
+                            <p class="text-[10px] text-slate-500 mt-1">
+                                NIP. 19820512 201102 1 002
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Note -->
+                <div
+                    class="absolute bottom-8 left-16 right-16 border-t border-slate-100 pt-4 flex justify-between items-center opacity-50 italic text-[10px]"
+                >
+                    <p>
+                        * Dokumen ini sah dicetak dari sistem SIKES tanpa tanda
+                        tangan basah jika terdapat kode QR.
+                    </p>
+                    <p>Halaman 1 dari 1</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div
+            class="px-8 py-6 border-t border-slate-100 bg-white flex items-center justify-between"
+        >
+            <div class="flex items-center gap-2 text-slate-400 text-xs">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-4 h-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                </svg>
+                Gunakan tombol Export di aplikasi untuk mencetak format ini.
+            </div>
+            <div class="flex items-center gap-3">
+                <button
+                    id="download-demo-pdf"
+                    class="btn btn-primary bg-emerald-600 hover:bg-emerald-700 flex items-center gap-2"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-5 h-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                        ></path>
+                    </svg>
+                    Download PDF
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const openBtn = document.getElementById("open-report-btn");
+    const closeBtn = document.getElementById("close-report-modal");
+    const modal = document.getElementById("report-modal");
+    const backdrop = document.getElementById("modal-backdrop");
+
+    const toggleModal = (show: boolean) => {
+        if (show) {
+            modal?.classList.remove("hidden");
+            modal?.classList.add("flex");
+            document.body.style.overflow = "hidden";
+        } else {
+            modal?.classList.add("hidden");
+            modal?.classList.remove("flex");
+            document.body.style.overflow = "";
+        }
+    };
+
+    // Check if button exists (it's in Hero.astro)
+    // We'll use a globally available event instead or look for it
+    document.addEventListener("click", (e) => {
+        const target = e.target as HTMLElement;
+        if (target.closest("#open-report-btn")) {
+            toggleModal(true);
+        }
+    });
+
+    closeBtn?.addEventListener("click", () => toggleModal(false));
+    backdrop?.addEventListener("click", () => toggleModal(false));
+</script>
