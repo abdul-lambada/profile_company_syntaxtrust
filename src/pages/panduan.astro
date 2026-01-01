@@ -6,6 +6,14 @@ const response = await fetch(
   "http://localhost/profile_syntaxtrust/api/data.php?aksi=produk",
 ).catch(() => null);
 const products: any[] = response ? await response.json() : [];
+
+// Ambil pengaturan situs
+const resSettings = await fetch(
+  "http://localhost/profile_syntaxtrust/api/data.php?aksi=pengaturan",
+).catch(() => null);
+const settings = resSettings
+  ? await resSettings.json()
+  : { wa_number: "628123456789" };
 ---
 
 <Layout
@@ -172,7 +180,7 @@ const products: any[] = response ? await response.json() : [];
       </p>
       <div class="flex flex-wrap justify-center gap-6">
         <a
-          href="https://wa.me/628123456789"
+          href={`https://wa.me/${settings.wa_number}`}
           class="px-8 py-4 glass rounded-2xl font-bold hover:bg-white/5 transition-all border border-white/10 text-white"
           >Hubungi Support</a
         >

@@ -26,11 +26,12 @@ if(!$user_data) {
 }
 
 if(isset($_POST['update_profil'])){
-    $nama = mysqli_real_escape_string($conn, $_POST['nama_lengkap']);
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $nama = $_POST['nama_lengkap'];
+    $username = $_POST['username'];
     
-    $u = "UPDATE pengguna SET nama_lengkap='$nama', username='$username' WHERE id='$user_id'";
-    if(mysqli_query($conn, $u)){
+    $stmt = $conn->prepare("UPDATE pengguna SET nama_lengkap=?, username=? WHERE id=?");
+    $stmt->bind_param("ssi", $nama, $username, $user_id);
+    if($stmt->execute()){
         $_SESSION['admin_nama'] = $nama;
         $message = "Profil berhasil diperbarui!";
         $user_data['nama_lengkap'] = $nama;
@@ -46,7 +47,9 @@ if(isset($_POST['update_password'])){
     
     if($password_baru === $konfirmasi){
         $hashed = password_hash($password_baru, PASSWORD_DEFAULT);
-        mysqli_query($conn, "UPDATE pengguna SET password='$hashed' WHERE id='$user_id'");
+        $stmt = $conn->prepare("UPDATE pengguna SET password=? WHERE id=?");
+        $stmt->bind_param("si", $hashed, $user_id);
+        $stmt->execute();
         $message = "Password berhasil diubah!";
     } else {
         $error = "Konfirmasi password tidak cocok.";

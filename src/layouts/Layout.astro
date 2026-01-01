@@ -26,6 +26,11 @@ const settings = resSettings
       deskripsi_footer:
         "Membangun masa depan digital Indonesia melalui solusi IT yang presisi dan visioner.",
     };
+
+// Pisahkan nama situs untuk styling (Contoh: "Syntax" + "Trust")
+const nameParts = settings.nama_situs.split(/(?=[A-Z])/);
+const brandMain = nameParts[0] || "Syntax";
+const brandAccent = nameParts.slice(1).join("") || "Trust";
 ---
 
 <!doctype html>
@@ -103,9 +108,9 @@ const settings = resSettings
                   class="w-12 h-12 rounded-xl object-contain shadow-lg transition-transform group-hover:scale-110"
                 />
                 <span class="text-2xl font-black tracking-tighter text-white"
-                  >{settings.nama_situs.substring(0, 6)}<span
+                  >{brandMain}<span
                     class="text-[#00A859] group-hover:text-white transition-colors"
-                    >{settings.nama_situs.substring(6)}</span
+                    >{brandAccent}</span
                   ></span
                 >
               </a>
@@ -217,9 +222,8 @@ const settings = resSettings
                 class="w-12 h-12 rounded-2xl object-cover"
               />
               <span class="text-2xl font-black text-white tracking-widest"
-                >{settings.nama_situs.substring(0, 11)}<span
-                  class="text-syntax-emerald"
-                  >{settings.nama_situs.substring(11)}</span
+                >{brandMain}<span class="text-syntax-emerald"
+                  >{brandAccent}</span
                 ></span
               >
             </a>

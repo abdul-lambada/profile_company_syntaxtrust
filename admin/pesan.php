@@ -3,17 +3,18 @@ include 'includes/header.php';
 
 // Update Status
 if (isset($_GET['status']) && isset($_GET['id'])) {
-    $id = mysqli_real_escape_string($conn, $_GET['id']);
-    $status = mysqli_real_escape_string($conn, $_GET['status']);
-    mysqli_query($conn, "UPDATE pesan SET status='$status' WHERE id='$id'");
+    $stmt = $conn->prepare("UPDATE pesan SET status=? WHERE id=?");
+    $stmt->bind_param("si", $_GET['status'], $_GET['id']);
+    $stmt->execute();
     header("Location: pesan.php");
     exit;
 }
 
 // Hapus Pesan
 if (isset($_GET['hapus'])) {
-  $id = mysqli_real_escape_string($conn, $_GET['hapus']);
-  mysqli_query($conn, "DELETE FROM pesan WHERE id='$id'");
+  $stmt = $conn->prepare("DELETE FROM pesan WHERE id=?");
+  $stmt->bind_param("i", $_GET['hapus']);
+  $stmt->execute();
   header("Location: pesan.php");
   exit;
 }

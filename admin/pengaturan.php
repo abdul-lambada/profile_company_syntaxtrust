@@ -8,9 +8,10 @@ include_once '../api/db.php';
 $message = "";
 
 if (isset($_POST['simpan'])) {
+    $stmt = $conn->prepare("UPDATE pengaturan SET nilai = ? WHERE kunci = ?");
     foreach($_POST['set'] as $key => $val) {
-        $val_safe = mysqli_real_escape_string($conn, $val);
-        mysqli_query($conn, "UPDATE pengaturan SET nilai='$val_safe' WHERE kunci='$key'");
+        $stmt->bind_param("ss", $val, $key);
+        $stmt->execute();
     }
     $message = "Pengaturan berhasil diperbarui!";
 }

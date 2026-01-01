@@ -23,17 +23,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (!empty($nama) && !empty($email)) {
-        $nama = mysqli_real_escape_string($conn, $nama);
-        $email = mysqli_real_escape_string($conn, $email);
-        $layanan = mysqli_real_escape_string($conn, $layanan);
-        $pesan = mysqli_real_escape_string($conn, $pesan);
-
-        $sql = "INSERT INTO pesan (nama, email, layanan, isi_pesan) VALUES ('$nama', '$email', '$layanan', '$pesan')";
+        $stmt = $conn->prepare("INSERT INTO pesan (nama, email, layanan, isi_pesan) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $nama, $email, $layanan, $pesan);
         
-        if (mysqli_query($conn, $sql)) {
+        if ($stmt->execute()) {
             echo json_encode(["success" => true, "message" => "Pesan berhasil disimpan."]);
         } else {
-            echo json_encode(["success" => false, "error" => mysqli_error($conn)]);
+            echo json_encode(["success" => false, "error" => $stmt->error]);
         }
     } else {
         echo json_encode(["success" => false, "error" => "Nama dan Email wajib diisi."]);
