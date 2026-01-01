@@ -1,0 +1,59 @@
+---
+const values = [
+    {
+        title: "Migrasi Data Tanpa Pusing",
+        desc: "Kami bantu pindahkan seluruh data siswa, tagihan lama, dan laporan dari Excel atau sistem lama Anda ke SIKES secara gratis.",
+        icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
+        color: "emerald",
+    },
+    {
+        title: "Pendampingan Hingga Mahir",
+        desc: "Tim support kami akan memberikan sesi pelatihan intensif bagi seluruh staf administrasi sekolah sampai semua lancar menggunakan sistem.",
+        icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z",
+        color: "indigo",
+    },
+    {
+        title: "Tanpa Biaya Tersembunyi",
+        desc: "Tidak ada biaya aktivasi, tidak ada biaya server, dan tidak ada biaya pelatihan tambahan. Semua sudah termasuk dalam langganan Anda.",
+        icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+        color: "emerald",
+    },
+];
+---
+
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-3 gap-12">
+            {
+                values.map((v) => (
+                    <div class="flex flex-col text-center items-center group">
+                        <div
+                            class={`w-16 h-16 rounded-2xl bg-${v.color}-50 text-${v.color}-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-${v.color}-500/5`}
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-8 h-8"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d={v.icon}
+                                />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-4">
+                            {v.title}
+                        </h3>
+                        <p class="text-slate-600 leading-relaxed text-sm">
+                            {v.desc}
+                        </p>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
