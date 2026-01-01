@@ -1,0 +1,150 @@
+---
+
+---
+
+<section
+    id="client-map"
+    class="py-24 bg-[#0a46bd] relative overflow-hidden text-center"
+>
+    <!-- Decorative Background -->
+    <div class="absolute inset-0 opacity-5 pointer-events-none">
+        <div
+            class="absolute top-0 left-0 w-full h-full"
+            style="background-image: radial-gradient(circle at 50% 50%, white 0.5px, transparent 0.5px); background-size: 30px 30px;"
+        >
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="mb-12">
+            <h2
+                class="text-3xl md:text-5xl font-bold text-white mb-6 animate-fade-in tracking-tight"
+            >
+                Telah Digunakan Berbagai Sekolah di Indonesia
+            </h2>
+            <p
+                class="text-white/80 text-lg max-w-2xl mx-auto animate-fade-in delay-100"
+            >
+                Sebaran ratusan sekolah pengguna software manajemen keuangan
+                kami di berbagai wilayah Indonesia.
+            </p>
+        </div>
+
+        <div class="mb-16 animate-fade-in delay-200">
+            <button
+                class="px-8 py-3 bg-white/10 hover:bg-white text-white hover:text-[#0a46bd] border border-white/30 font-bold rounded-xl transition-all active:scale-95 uppercase tracking-widest text-xs"
+            >
+                cek daftar sekolah klien kami disini
+            </button>
+        </div>
+
+        <!-- Map Container -->
+        <div
+            class="relative w-full max-w-5xl mx-auto aspect-2/1 bg-white/5 rounded-[40px] p-8 backdrop-blur-sm border border-white/10 shadow-2xl overflow-hidden group animate-fade-in delay-300"
+        >
+            <!-- Detailed Indonesia Map SVG -->
+            <svg
+                viewBox="0 0 1000 400"
+                class="w-full h-full text-white/20 fill-current transition-all duration-700 group-hover:scale-105 group-hover:text-white/30"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    d="M12.9,139.6c8.5,4.7,16.9,9.3,25.4,14c0.1,5.1,0.2,10.1,0.2,15.2c-7.3,7.9-14.7,15.7-22.1,23.6 c-5.4,0.1-10.9,0.2-16.3,0.2c-0.1-17.7-0.1-35.3-0.2-53H12.9z"
+                ></path>
+                <path
+                    d="M57.6,158.6c18.3,12.2,36.5,24.5,54.8,36.7c7.5,12.7,15,25.4,22.4,38.1c-14.9,8.4-29.8,16.8-44.6,25.3 c-16.7-16.1-33.3-32.1-49.9-48.2c4.4-14.1,8.9-28.1,13.3-42.2C55.1,155.1,56.4,156.8,57.6,158.6z"
+                ></path>
+                <path
+                    d="M141.6,233.1c11.3-4.1,22.7-8.1,34-12.2c16.1,12.4,32.2,24.8,48.2,37.3c-11.4,12.1-22.7,24.2-34.1,36.4 c-17.6-1.5-35.3-2.9-52.9-4.4c0.5-19.1,0.9-38.1,1.4-57.2C139.3,232.9,140.4,233,141.6,233.1z"
+                ></path>
+                <path
+                    d="M226.7,272.2c15.1,5.6,30.3,11.2,45.4,16.8c18.3-4.1,36.5-8.2,54.8-12.3c3,12.1,6.1,24.2,9.1,36.3 c-29.6,12.4-59.3,24.7-88.9,37.1c-8.8-25-17.6-50.1-26.4-75.1C223,274,224.8,273.1,226.7,272.2z"
+                ></path>
+                <path
+                    d="M352.4,124.3c21.3,0.3,42.6,0.5,64,0.8c5.4,26.7,10.8,53.4,16.2,80.1l-40.3,20.2c-15.6-29.2-31.2-58.4-46.7-87.7 C347.9,133.5,350.1,128.9,352.4,124.3z"
+                ></path>
+                <path
+                    d="M523.1,154.2c28.5-5.3,57.1-10.7,85.6-16c12.2,16.1,24.3,32.2,36.5,48.2c-5.1,18.9-10.2,37.8-15.3,56.8l-80.1,12.1 c1.4-18.3,2.8-36.6,4.1-55C541.9,183,529,168.6,523.1,154.2z"
+                ></path>
+                <path
+                    d="M784.5,102.1c32.1,5.4,64.2,10.8,96.3,16.1c-2.4,45.4-4.8,90.8-7.2,136.2l-64,12.1c-20.2-24.1-40.3-48.2-60.5-72.3 c13.6-21.3,27.1-42.6,40.7-64C784,120.3,784.2,111.2,784.5,102.1z"
+                ></path>
+
+                <!-- High Fidelity Markers (White dot with pulse) -->
+                {
+                    [
+                        { x: 80, y: 180, d: 0 },
+                        { x: 120, y: 210, d: 0.2 },
+                        { x: 150, y: 170, d: 0.4 },
+                        { x: 50, y: 150, d: 0.8 },
+                        { x: 230, y: 280, d: 0.5 },
+                        { x: 270, y: 290, d: 0.1 },
+                        { x: 340, y: 285, d: 0.9 },
+                        { x: 410, y: 160, d: 0.3 },
+                        { x: 440, y: 200, d: 1.1 },
+                        { x: 620, y: 180, d: 0.6 },
+                        { x: 660, y: 220, d: 1.4 },
+                        { x: 880, y: 200, d: 0.7 },
+                        { x: 910, y: 250, d: 1.1 },
+                    ].map((m) => (
+                        <g transform={`translate(${m.x}, ${m.y})`}>
+                            <circle
+                                r="6"
+                                class="fill-emerald-400/40 animate-ping"
+                                style={`animation-delay: ${m.d}s`}
+                            />
+                            <circle
+                                r="4"
+                                class="fill-white stroke-2 stroke-emerald-500"
+                            />
+                        </g>
+                    ))
+                }
+            </svg>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Widget -->
+    <div
+        class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 pointer-events-none"
+    >
+        <div
+            id="wa-tooltip"
+            class="bg-white px-5 py-3 rounded-2xl shadow-2xl text-xs font-bold text-slate-800 animate-fade-in hidden border border-slate-100 pointer-events-auto"
+        >
+            Chat kami sekarang 👋
+        </div>
+        <a
+            href="https://wa.me/085156553226"
+            target="_blank"
+            class="w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-2xl hover:bg-emerald-600 hover:rotate-12 transition-all active:scale-95 group pointer-events-auto relative"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-9 h-9"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.538-2.961-2.654-.087-.116-.708-.941-.708-1.796 0-.855.449-1.274.609-1.441.16-.166.347-.209.462-.209s.231.002.332.006c.101.004.237-.038.371.284.134.322.463 1.127.502 1.207.039.081.065.175.011.284-.054.109-.081.175-.161.267-.081.092-.17.206-.242.277-.081.081-.165.17-.071.332.094.162.417.689.896 1.114.617.548 1.137.718 1.301.8.163.082.259.068.355-.043.096-.111.411-.48.522-.644.11-.163.221-.137.371-.081.15.056.953.5 1.118.581.165.081.275.122.316.19.041.067.041.393-.103.798z"
+                ></path>
+            </svg>
+            <span class="absolute -top-1 -right-1 flex h-5 w-5">
+                <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"
+                ></span>
+                <span
+                    class="relative inline-flex rounded-full h-5 w-5 bg-rose-500 border-2 border-white text-[10px] font-bold items-center justify-center"
+                    >1</span
+                >
+            </span>
+        </a>
+    </div>
+</section>
+
+<script>
+    const waTooltip = document.getElementById("wa-tooltip");
+    setTimeout(() => {
+        waTooltip?.classList.remove("hidden");
+    }, 4000);
+</script>
