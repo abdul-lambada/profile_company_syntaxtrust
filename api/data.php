@@ -36,6 +36,24 @@ switch ($aksi) {
         echo json_encode($data);
         break;
 
+    case 'mitra':
+        $hasil = mysqli_query($conn, "SELECT * FROM mitra");
+        $data = [];
+        while ($baris = mysqli_fetch_assoc($hasil)) {
+            $data[] = $baris;
+        }
+        echo json_encode($data);
+        break;
+
+    case 'pengaturan':
+        $hasil = mysqli_query($conn, "SELECT * FROM pengaturan");
+        $data = [];
+        while ($baris = mysqli_fetch_assoc($hasil)) {
+            $data[$baris['kunci']] = $baris['nilai'];
+        }
+        echo json_encode($data);
+        break;
+
     default:
         echo json_encode(["status" => "error", "pesan" => "Aksi tidak dikenal"]);
         break;

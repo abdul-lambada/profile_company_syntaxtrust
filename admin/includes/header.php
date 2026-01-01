@@ -48,6 +48,11 @@ include_once '../api/db.php';
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
+          <li class="nav-item d-none d-lg-block me-3">
+            <a href="../" target="_blank" class="btn btn-sm btn-outline-info">
+                <i class="mdi mdi-earth me-1"></i> Lihat Website
+            </a>
+          </li>
           <li class="nav-item dropdown d-none d-lg-block user-dropdown">
             <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
               <div class="bg-primary rounded-circle text-white p-2" style="width:40px; height:40px; display:flex; align-items:center; justify-content:center;">
@@ -100,9 +105,26 @@ include_once '../api/db.php';
             <a class="nav-link" href="pesan.php">
               <i class="menu-icon mdi mdi-message-text-outline"></i>
               <span class="menu-title">Pesan Masuk</span>
+              <?php
+              $q_new = mysqli_query($conn, "SELECT COUNT(*) as total FROM pesan WHERE status='baru'");
+              $new_count = mysqli_fetch_assoc($q_new)['total'];
+              if($new_count > 0) echo '<span class="badge badge-danger ms-2">'.$new_count.'</span>';
+              ?>
+            </a>
+          </li>
+          <li class="nav-item <?php echo $current_page == 'mitra.php' ? 'active' : ''; ?>">
+            <a class="nav-link" href="mitra.php">
+              <i class="menu-icon mdi mdi-handshake-outline"></i>
+              <span class="menu-title">Mitra Strategis</span>
             </a>
           </li>
           <li class="nav-item nav-category">Pengaturan</li>
+          <li class="nav-item <?php echo $current_page == 'pengaturan.php' ? 'active' : ''; ?>">
+            <a class="nav-link" href="pengaturan.php">
+              <i class="menu-icon mdi mdi-settings-outline"></i>
+              <span class="menu-title">Konfigurasi Situs</span>
+            </a>
+          </li>
           <li class="nav-item <?php echo $current_page == 'profil.php' ? 'active' : ''; ?>">
             <a class="nav-link" href="profil.php" >
               <i class="menu-icon mdi mdi-account-circle-outline"></i>

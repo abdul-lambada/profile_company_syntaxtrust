@@ -12,6 +12,20 @@ const {
   description = "SyntaxTrust - Solusi IT premium untuk Sistem Keuangan Sekolah dan Jasa Pembuatan Website Kustom dengan teknologi modern.",
   ogImage = "/logo.jpg",
 } = Astro.props;
+
+// Ambil pengaturan situs
+const resSettings = await fetch(
+  "http://localhost/profile_syntaxtrust/api/data.php?aksi=pengaturan",
+).catch(() => null);
+const settings = resSettings
+  ? await resSettings.json()
+  : {
+      nama_situs: "SyntaxTrust",
+      wa_number: "628123456789",
+      email_kontak: "info@syntaxtrust.com",
+      deskripsi_footer:
+        "Membangun masa depan digital Indonesia melalui solusi IT yang presisi dan visioner.",
+    };
 ---
 
 <!doctype html>
@@ -23,21 +37,24 @@ const {
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO Meta Tags -->
-    <title>{title} | SyntaxTrust</title>
+    <title>{title} | {settings.nama_situs}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url} />
-    <meta property="og:title" content={`${title} | SyntaxTrust`} />
+    <meta property="og:title" content={`${title} | ${settings.nama_situs}`} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(ogImage, Astro.url)} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={Astro.url} />
-    <meta property="twitter:title" content={`${title} | SyntaxTrust`} />
+    <meta
+      property="twitter:title"
+      content={`${title} | ${settings.nama_situs}`}
+    />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
 
@@ -48,7 +65,7 @@ const {
   >
     <!-- WhatsApp Floating Button -->
     <a
-      href="https://wa.me/6281234567890"
+      href={`https://wa.me/${settings.wa_number}`}
       target="_blank"
       class="fixed bottom-8 left-8 z-[100] group"
       aria-label="Chat WhatsApp"
@@ -82,13 +99,13 @@ const {
               <a href="/" class="flex items-center space-x-3 group">
                 <img
                   src="/logo.jpg"
-                  alt="SyntaxTrust Logo"
+                  alt="Logo"
                   class="w-12 h-12 rounded-xl object-contain shadow-lg transition-transform group-hover:scale-110"
                 />
                 <span class="text-2xl font-black tracking-tighter text-white"
-                  >Syntax<span
+                  >{settings.nama_situs.substring(0, 6)}<span
                     class="text-[#00A859] group-hover:text-white transition-colors"
-                    >Trust</span
+                    >{settings.nama_situs.substring(6)}</span
                   ></span
                 >
               </a>
@@ -114,7 +131,7 @@ const {
                 }
                 <div class="w-px h-6 bg-white/10 mx-4"></div>
                 <a
-                  href="https://wa.me/6281234567890"
+                  href={`https://wa.me/${settings.wa_number}`}
                   target="_blank"
                   class="bg-syntax-accent hover:bg-syntax-accent-light text-white px-7 py-3 rounded-2xl text-sm font-black transition-all shadow-xl shadow-syntax-accent/30 hover:scale-105 active:scale-95"
                 >
@@ -172,7 +189,7 @@ const {
             ))
           }
           <a
-            href="https://wa.me/6281234567890"
+            href={`https://wa.me/${settings.wa_number}`}
             target="_blank"
             class="block w-full bg-syntax-accent text-white text-center py-4 rounded-2xl font-black shadow-lg"
           >
@@ -200,12 +217,14 @@ const {
                 class="w-12 h-12 rounded-2xl object-cover"
               />
               <span class="text-2xl font-black text-white tracking-widest"
-                >Syntax<span class="text-syntax-emerald">Trust</span></span
+                >{settings.nama_situs.substring(0, 11)}<span
+                  class="text-syntax-emerald"
+                  >{settings.nama_situs.substring(11)}</span
+                ></span
               >
             </a>
             <p class="text-gray-500 font-medium leading-relaxed">
-              Membangun masa depan digital Indonesia melalui solusi IT yang
-              presisi dan visioner.
+              {settings.deskripsi_footer}
             </p>
           </div>
 
@@ -297,8 +316,8 @@ const {
         </div>
         <div class="pt-16 border-t border-white/5 text-center">
           <p class="text-gray-600 font-bold text-xs uppercase tracking-widest">
-            &copy; {new Date().getFullYear()} SyntaxTrust. Manufactured with ❤️ in
-            Indonesia.
+            &copy; {new Date().getFullYear()}
+            {settings.nama_situs}. Manufactured with ❤️ in Indonesia.
           </p>
         </div>
       </div>

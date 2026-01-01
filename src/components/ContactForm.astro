@@ -4,6 +4,14 @@ const response = await fetch(
     "http://localhost/profile_syntaxtrust/api/data.php?aksi=produk",
 ).catch(() => null);
 const services: any[] = response ? await response.json() : [];
+
+// Ambil pengaturan situs
+const resSettings = await fetch(
+    "http://localhost/profile_syntaxtrust/api/data.php?aksi=pengaturan",
+).catch(() => null);
+const settings = resSettings
+    ? await resSettings.json()
+    : { wa_number: "628123456789" };
 ---
 
 <div id="contact-form-container" class="relative group">
@@ -14,7 +22,11 @@ const services: any[] = response ? await response.json() : [];
     <div
         class="relative glass bg-[#0D0D0F] rounded-[3rem] border border-white/10 p-10 md:p-14"
     >
-        <form id="main-contact-form" class="space-y-8">
+        <form
+            id="main-contact-form"
+            class="space-y-8"
+            data-wa={settings.wa_number}
+        >
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="space-y-3">
                     <label
@@ -127,6 +139,7 @@ const services: any[] = response ? await response.json() : [];
         e.preventDefault();
 
         const formData = new FormData(form as HTMLFormElement);
+        const waNumber = (form as HTMLElement).dataset.wa || "628123456789";
         const data = {
             nama: formData.get("nama"),
             email: formData.get("email"),
@@ -161,7 +174,7 @@ const services: any[] = response ? await response.json() : [];
 
                 // Buat pesan WhatsApp
                 const waMessage = `Halo SyntaxTrust, saya ${data.nama}.\n\nSaya tertarik dengan layanan: ${data.layanan}.\n\nPesan: ${data.pesan}`;
-                const waLink = `https://wa.me/6281234567890?text=${encodeURIComponent(waMessage)}`;
+                const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
 
                 setTimeout(() => {
                     window.open(waLink, "_blank");

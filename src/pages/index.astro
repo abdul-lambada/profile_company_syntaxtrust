@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ContactForm from "../components/ContactForm.astro";
-import { partners } from "../data/products";
 
 // Ambil data dinamis dari Backend PHP
 const responseSekolah = await fetch(
@@ -15,6 +14,11 @@ const responseWeb = await fetch(
   "http://localhost/profile_syntaxtrust/api/data.php?aksi=klien_web",
 ).catch(() => null);
 const webClients: any[] = responseWeb ? await responseWeb.json() : [];
+
+const responseMitra = await fetch(
+  "http://localhost/profile_syntaxtrust/api/data.php?aksi=mitra",
+).catch(() => null);
+const partners: any[] = responseMitra ? await responseMitra.json() : [];
 ---
 
 <Layout
@@ -231,15 +235,21 @@ const webClients: any[] = responseWeb ? await responseWeb.json() : [];
       <div class="relative flex overflow-x-hidden">
         <div class="animate-marquee whitespace-nowrap flex items-center">
           {
-            [...partners, ...partners].map((partner) => (
-              <div class="mx-16 flex items-center justify-center">
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  class="h-10 w-auto logo-filter brightness-[100]"
-                />
+            partners.length > 0 ? (
+              [...partners, ...partners].map((partner) => (
+                <div class="mx-16 flex items-center justify-center">
+                  <img
+                    src={`http://localhost/profile_syntaxtrust/admin/${partner.logo}`}
+                    alt={partner.nama}
+                    class="h-10 w-auto logo-filter brightness-[100]"
+                  />
+                </div>
+              ))
+            ) : (
+              <div class="w-full text-center text-gray-700 font-bold uppercase tracking-widest">
+                Belum ada mitra terdaftar
               </div>
-            ))
+            )
           }
         </div>
       </div>

@@ -13,6 +13,9 @@ $total_web = mysqli_fetch_assoc($q_web)['total'];
 
 $q_pesan = mysqli_query($conn, "SELECT COUNT(*) as total FROM pesan");
 $total_pesan = mysqli_fetch_assoc($q_pesan)['total'];
+
+$q_mitra = mysqli_query($conn, "SELECT COUNT(*) as total FROM mitra");
+$total_mitra = mysqli_fetch_assoc($q_mitra)['total'];
 ?>
 
 <div class="row">
@@ -39,6 +42,10 @@ $total_pesan = mysqli_fetch_assoc($q_pesan)['total'];
                                     <p class="statistics-title">Pesan Baru</p>
                                     <h3 class="rate-percentage"><?php echo $total_pesan; ?></h3>
                                 </div>
+                                <div>
+                                    <p class="statistics-title">Total Mitra</p>
+                                    <h3 class="rate-percentage"><?php echo $total_mitra; ?></h3>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -62,8 +69,9 @@ $total_pesan = mysqli_fetch_assoc($q_pesan)['total'];
                                                     <thead>
                                                         <tr>
                                                             <th>Waktu</th>
+                                                            <th>Status</th>
                                                             <th>Pengirim</th>
-                                                            <th>Layanan Diminati</th>
+                                                            <th>Layanan</th>
                                                             <th>Aksi</th>
                                                         </tr>
                                                     </thead>
@@ -74,6 +82,15 @@ $total_pesan = mysqli_fetch_assoc($q_pesan)['total'];
                                                         ?>
                                                             <tr>
                                                                 <td><?php echo date('d/m/Y H:i', strtotime($row['dibuat_pada'])); ?></td>
+                                                                <td>
+                                                                    <?php if($row['status'] == 'baru'): ?>
+                                                                        <span class="badge badge-danger">Baru</span>
+                                                                    <?php elseif($row['status'] == 'dibaca'): ?>
+                                                                        <span class="badge badge-warning text-dark">Dibaca</span>
+                                                                    <?php else: ?>
+                                                                        <span class="badge badge-success">Selesai</span>
+                                                                    <?php endif; ?>
+                                                                </td>
                                                                 <td>
                                                                     <div class="d-flex ">
                                                                         <div>
@@ -86,7 +103,7 @@ $total_pesan = mysqli_fetch_assoc($q_pesan)['total'];
                                                                     <h6><?php echo $row['layanan']; ?></h6>
                                                                 </td>
                                                                 <td>
-                                                                    <a href="pesan.php" class="btn btn-sm btn-outline-primary">Detail</a>
+                                                                    <a href="pesan.php" class="btn btn-sm btn-outline-primary">Kelola</a>
                                                                 </td>
                                                             </tr>
                                                         <?php endwhile; ?>

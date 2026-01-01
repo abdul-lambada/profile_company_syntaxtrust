@@ -28,6 +28,7 @@ mysqli_query($conn, $q2);
 $q3 = "CREATE TABLE IF NOT EXISTS klien_web (
     id VARCHAR(50) PRIMARY KEY,
     nama VARCHAR(100) NOT NULL,
+    gambar VARCHAR(255),
     kategori VARCHAR(50),
     tahun VARCHAR(10),
     deskripsi TEXT,
@@ -37,6 +38,14 @@ $q3 = "CREATE TABLE IF NOT EXISTS klien_web (
 )";
 mysqli_query($conn, $q3);
 
+// Tabel Mitra (Partner Logos)
+$q_mitra = "CREATE TABLE IF NOT EXISTS mitra (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama VARCHAR(100) NOT NULL,
+    logo VARCHAR(255)
+)";
+mysqli_query($conn, $q_mitra);
+
 // Tabel Pesan
 $q4 = "CREATE TABLE IF NOT EXISTS pesan (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -44,9 +53,29 @@ $q4 = "CREATE TABLE IF NOT EXISTS pesan (
     email VARCHAR(100),
     layanan VARCHAR(100),
     isi_pesan TEXT,
+    status ENUM('baru', 'dibaca', 'selesai') DEFAULT 'baru',
     dibuat_pada TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )";
 mysqli_query($conn, $q4);
+
+// Tabel Pengaturan
+$q_set = "CREATE TABLE IF NOT EXISTS pengaturan (
+    kunci VARCHAR(50) PRIMARY KEY,
+    nilai TEXT
+)";
+mysqli_query($conn, $q_set);
+
+// Default Pengaturan
+$default_settings = [
+    'nama_situs' => 'SyntaxTrust',
+    'wa_number' => '628123456789',
+    'email_kontak' => 'info@syntaxtrust.com',
+    'deskripsi_footer' => 'SyntaxTrust adalah partner teknologi visioner yang membantu institusi pendidikan dan korporasi melalui integritas kode.'
+];
+
+foreach($default_settings as $key => $val) {
+    mysqli_query($conn, "INSERT IGNORE INTO pengaturan (kunci, nilai) VALUES ('$key', '$val')");
+}
 
 // Tabel Pengguna (Admin)
 $q5 = "CREATE TABLE IF NOT EXISTS pengguna (
@@ -64,5 +93,5 @@ if(mysqli_num_rows($check_user) == 0){
     mysqli_query($conn, "INSERT INTO pengguna (username, password, nama_lengkap) VALUES ('admin', '$pass_default', 'Admin SyntaxTrust')");
 }
 
-echo "Struktur database dengan bahasa Indonesia & tabel pengguna berhasil disiapkan.";
+echo "OK";
 ?>
