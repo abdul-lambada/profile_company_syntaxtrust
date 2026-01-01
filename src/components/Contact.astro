@@ -1,0 +1,167 @@
+<section id="contact" class="py-24 bg-slate-900 overflow-hidden relative">
+    <!-- Interactive background blobs -->
+    <div
+        class="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500 rounded-full blur-[150px] opacity-10 z-0"
+    >
+    </div>
+    <div
+        class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500 rounded-full blur-[150px] opacity-10 z-0"
+    >
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <span
+                    class="text-emerald-400 font-bold text-sm uppercase tracking-widest mb-4 block"
+                    >Hubungi Kami</span
+                >
+                <h2
+                    class="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight"
+                >
+                    Konsultasikan <span
+                        class="text-emerald-400 leading-none antialiased italic"
+                        >Kebutuhan</span
+                    > Digitalisasi Sekolah Anda.
+                </h2>
+                <p class="text-slate-400 text-lg mb-12 leading-relaxed">
+                    Tim kami siap membantu proses instalasi, migrasi data,
+                    hingga pelatihan staf administrasi sekolah Anda secara
+                    gratis.
+                </p>
+
+                <div class="space-y-8">
+                    {
+                        [
+                            {
+                                label: "Chat WhatsApp",
+                                value: "0851-5655-3226",
+                                icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z",
+                                color: "emerald",
+                            },
+                            {
+                                label: "Email Support",
+                                value: "support@sikes.com",
+                                icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+                                color: "indigo",
+                            },
+                            {
+                                label: "Lokasi Kantor",
+                                value: "Jakarta, Indonesia",
+                                icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z",
+                                color: "rose",
+                            },
+                        ].map((item) => (
+                            <div class="flex items-center gap-6 group cursor-pointer">
+                                <div
+                                    class={`w-14 h-14 rounded-2xl bg-${item.color}-500/10 flex items-center justify-center text-${item.color}-400 group-hover:bg-${item.color}-500 group-hover:text-white transition-all duration-300 border border-${item.color}-500/20 shadow-lg shadow-${item.color}-500/5`}
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="w-6 h-6"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d={item.icon}
+                                        />
+                                    </svg>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">
+                                        {item.label}
+                                    </span>
+                                    <span class="text-white font-bold text-lg group-hover:text-emerald-400 transition-colors">
+                                        {item.value}
+                                    </span>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <div class="bg-white rounded-[40px] p-10 shadow-2xl relative">
+                <div
+                    class="absolute -top-10 -right-10 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl"
+                >
+                </div>
+                <h3
+                    class="text-2xl font-bold text-slate-900 mb-8 tracking-tight"
+                >
+                    Kirim Pesan Cepat
+                </h3>
+                <form class="space-y-6">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label
+                                class="text-xs font-bold text-slate-500 uppercase tracking-widest"
+                                >Nama Lengkap</label
+                            >
+                            <input
+                                type="text"
+                                placeholder="John Doe"
+                                class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 outline-none transition-all placeholder:text-slate-300"
+                            />
+                        </div>
+                        <div class="space-y-2">
+                            <label
+                                class="text-xs font-bold text-slate-500 uppercase tracking-widest"
+                                >Nama Sekolah</label
+                            >
+                            <input
+                                type="text"
+                                placeholder="SMK Negeri 1"
+                                class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 outline-none transition-all placeholder:text-slate-300"
+                            />
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label
+                            class="text-xs font-bold text-slate-500 uppercase tracking-widest"
+                            >Email Bisnis</label
+                        >
+                        <input
+                            type="email"
+                            placeholder="email@sekolah.sch.id"
+                            class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 outline-none transition-all placeholder:text-slate-300"
+                        />
+                    </div>
+                    <div class="space-y-2">
+                        <label
+                            class="text-xs font-bold text-slate-500 uppercase tracking-widest"
+                            >Pesan Anda</label
+                        >
+                        <textarea
+                            rows="4"
+                            placeholder="Halo SIKES, kami tertarik untuk..."
+                            class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 outline-none transition-all placeholder:text-slate-300 resize-none"
+                        ></textarea>
+                    </div>
+                    <button
+                        class="w-full py-5 bg-slate-900 text-white font-bold rounded-2xl hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/10 active:scale-95 flex items-center justify-center gap-3"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-5 h-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                        </svg>
+                        Kirim Sekarang
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
