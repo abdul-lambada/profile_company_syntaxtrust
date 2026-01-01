@@ -1,0 +1,136 @@
+---
+const pricing = [
+    {
+        name: "Starter",
+        price: "299rb",
+        period: "/bulan",
+        description: "Cocok untuk sekolah dengan < 200 siswa.",
+        features: [
+            "Sistem SPP Basic",
+            "Laporan Harian",
+            "Akses 2 Admin",
+            "Support Email",
+        ],
+        recommended: false,
+        color: "slate",
+    },
+    {
+        name: "Professional",
+        price: "599rb",
+        period: "/bulan",
+        description: "Solusi lengkap untuk sekolah berkembang.",
+        features: [
+            "Sistem Keuangan Lengkap",
+            "Integrasi WhatsApp",
+            "Akses Unlimitied Admin",
+            "Dashboard Orang Tua",
+        ],
+        recommended: true,
+        color: "blue",
+    },
+    {
+        name: "Enterprise",
+        price: "Custom",
+        period: "",
+        description: "Kebutuhan khusus untuk Yayasan/Grup Sekolah.",
+        features: [
+            "Multi-Sekolah / Pusat",
+            "Custom Fitur API",
+            "Dedicated Support 24/7",
+            "On-Site Training",
+        ],
+        recommended: false,
+        color: "indigo",
+    },
+];
+---
+
+<section id="harga" class="py-24 bg-slate-900 text-white">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-20">
+            <h2
+                class="text-blue-400 font-bold tracking-wider uppercase text-sm mb-4"
+            >
+                Skema Harga
+            </h2>
+            <h3 class="text-3xl lg:text-4xl font-bold mb-6">
+                Pilih Paket yang Sesuai dengan Kebutuhan Anda
+            </h3>
+            <p class="text-slate-400 max-w-2xl mx-auto">
+                Investasi terbaik untuk efisiensi dan transparansi keuangan
+                sekolah Anda. Tanpa biaya instalasi di awal.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 items-center">
+            {
+                pricing.map((plan) => (
+                    <div
+                        class={`relative p-8 rounded-3xl border ${plan.recommended ? "bg-blue-600 border-blue-500 scale-105 shadow-2xl shadow-blue-500/20" : "bg-slate-800/50 border-slate-700"} transition-all duration-300`}
+                    >
+                        {plan.recommended && (
+                            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-blue-600 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
+                                Paling Populer
+                            </div>
+                        )}
+                        <div class="mb-8">
+                            <h4 class="text-xl font-bold mb-2">{plan.name}</h4>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-4xl font-extrabold">
+                                    {plan.price}
+                                </span>
+                                <span class="text-slate-400">
+                                    {plan.period}
+                                </span>
+                            </div>
+                            <p class="text-sm text-slate-400 mt-4">
+                                {plan.description}
+                            </p>
+                        </div>
+
+                        <ul class="space-y-4 mb-10">
+                            {plan.features.map((feature) => (
+                                <li class="flex items-center gap-3 text-sm">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="18"
+                                        height="18"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class={
+                                            plan.recommended
+                                                ? "text-blue-200"
+                                                : "text-blue-400"
+                                        }
+                                    >
+                                        <path d="M20 6 9 17l-5-5" />
+                                    </svg>
+                                    <span
+                                        class={
+                                            plan.recommended
+                                                ? "text-white"
+                                                : "text-slate-300"
+                                        }
+                                    >
+                                        {feature}
+                                    </span>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <a
+                            href={`https://wa.me/628123456789?text=Halo, saya tertarik dengan paket ${plan.name}`}
+                            class={`block w-full text-center py-4 rounded-xl font-bold transition-all ${plan.recommended ? "bg-white text-blue-600 hover:bg-slate-100" : "bg-slate-700 text-white hover:bg-slate-600"}`}
+                        >
+                            Pilih Paket
+                        </a>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>

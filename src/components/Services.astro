@@ -1,0 +1,147 @@
+---
+const services = [
+    {
+        title: "Sewa Sistem Keuangan Sekolah",
+        description:
+            "Aplikasi manajemen keuangan lengkap mulai dari SPP, Gaji, hingga pelaporan otomatis untuk semua jenjang (SD/SMP/SMA).",
+        icon: "wallet",
+        features: [
+            "Manajemen SPP & Daftar Ulang",
+            "Integrasi WhatsApp Gateway",
+            "Laporan Keuangan Otomatis",
+            "Dashboard Orang Tua",
+        ],
+        color: "blue",
+    },
+    {
+        title: "Jasa Pembuatan Website",
+        description:
+            "Custom website profesional untuk profil sekolah, instansi, atau portal berita dengan desain modern dan SEO friendly.",
+        icon: "monitor",
+        features: [
+            "Desain Eksklusif (Non-Template)",
+            "Responsif & Mobile Friendly",
+            "Optimasi SEO & Kecepatan",
+            "Gratis Hosting & Domain",
+        ],
+        color: "indigo",
+    },
+    {
+        title: "Pemeliharaan & Support",
+        description:
+            "Layanan dukungan teknis 24/7 untuk memastikan sistem dan website Anda selalu berjalan optimal tanpa kendala.",
+        icon: "shield-check",
+        features: [
+            "Update Keamanan Rutin",
+            "Backup Data Mingguan",
+            "Konsultasi Teknis Gratis",
+            "Monitoring Uptime 99.9%",
+        ],
+        color: "emerald",
+    },
+];
+---
+
+<section id="sistem" class="py-24 bg-slate-50">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-20">
+            <h2
+                class="text-blue-600 font-bold tracking-wider uppercase text-sm mb-4"
+            >
+                Layanan Unggulan
+            </h2>
+            <h3 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-6">
+                Solusi Digital Lengkap untuk Institusi Anda
+            </h3>
+            <p class="text-slate-600 max-w-2xl mx-auto">
+                Kami menyediakan teknologi mutakhir untuk mempercepat proses
+                administrasi dan memperluas jangkauan digital sekolah Anda.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            {
+                services.map((service) => (
+                    <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                        <div
+                            class={`w-14 h-14 rounded-2xl bg-${service.color}-50 text-${service.color}-600 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform`}
+                        >
+                            {service.icon === "wallet" && (
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="32"
+                                    height="32"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" />
+                                    <path d="M3 5v14a2 2 0 0 0 2 2h16v-5" />
+                                    <path d="M18 12a2 2 0 0 0 0 4h4v-4Z" />
+                                </svg>
+                            )}
+                            {service.icon === "monitor" && (
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="32"
+                                    height="32"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <rect
+                                        width="20"
+                                        height="14"
+                                        x="2"
+                                        y="3"
+                                        rx="2"
+                                    />
+                                    <line x1="8" x2="16" y1="21" y2="21" />
+                                    <line x1="12" x2="12" y1="17" y2="21" />
+                                </svg>
+                            )}
+                            {service.icon === "shield-check" && (
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="32"
+                                    height="32"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+                                    <path d="m9 12 2 2 4-4" />
+                                </svg>
+                            )}
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-4">
+                            {service.title}
+                        </h4>
+                        <p class="text-slate-600 mb-8 leading-relaxed">
+                            {service.description}
+                        </p>
+                        <ul class="space-y-4">
+                            {service.features.map((feature) => (
+                                <li class="flex items-center gap-3 text-sm text-slate-700 font-medium">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                                    {feature}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
