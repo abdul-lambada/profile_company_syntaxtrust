@@ -1,0 +1,187 @@
+---
+// Ambil data layanan dari database PHP
+const response = await fetch(
+    "http://localhost/profile_syntaxtrust/api/data.php?aksi=produk",
+).catch(() => null);
+const services: any[] = response ? await response.json() : [];
+---
+
+<div id="contact-form-container" class="relative group">
+    <div
+        class="absolute -inset-1 bg-gradient-to-r from-syntax-accent to-syntax-emerald rounded-[3rem] blur opacity-20 group-hover:opacity-40 transition-opacity"
+    >
+    </div>
+    <div
+        class="relative glass bg-[#0D0D0F] rounded-[3rem] border border-white/10 p-10 md:p-14"
+    >
+        <form id="main-contact-form" class="space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <label
+                        for="nama"
+                        class="text-xs font-black text-gray-500 uppercase tracking-widest ml-1"
+                        >Nama Lengkap</label
+                    >
+                    <input
+                        type="text"
+                        id="nama"
+                        name="nama"
+                        required
+                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-syntax-emerald/50 transition-colors"
+                        placeholder="John Doe"
+                    />
+                </div>
+                <div class="space-y-3">
+                    <label
+                        for="email"
+                        class="text-xs font-black text-gray-500 uppercase tracking-widest ml-1"
+                        >Alamat Email</label
+                    >
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-syntax-accent/50 transition-colors"
+                        placeholder="john@example.com"
+                    />
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <label
+                    for="layanan"
+                    class="text-xs font-black text-gray-500 uppercase tracking-widest ml-1"
+                    >Layanan yang Diminati</label
+                >
+                <select
+                    id="layanan"
+                    name="layanan"
+                    required
+                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-syntax-emerald/50 transition-colors appearance-none"
+                >
+                    <option value="" class="bg-black">Pilih Layanan</option>
+                    {
+                        services.map((s: any) => (
+                            <option value={s.nama} class="bg-black">
+                                {s.nama}
+                            </option>
+                        ))
+                    }
+                    <option value="Lainnya" class="bg-black"
+                        >Konsultasi Lainnya</option
+                    >
+                </select>
+            </div>
+
+            <div class="space-y-3">
+                <label
+                    for="pesan"
+                    class="text-xs font-black text-gray-500 uppercase tracking-widest ml-1"
+                    >Detail Pesan</label
+                >
+                <textarea
+                    id="pesan"
+                    name="pesan"
+                    required
+                    rows="5"
+                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-syntax-accent/50 transition-colors resize-none"
+                    placeholder="Ceritakan kebutuhan bisnis Anda..."></textarea>
+            </div>
+
+            <button
+                type="submit"
+                id="submit-btn"
+                class="w-full btn-primary py-5 rounded-2xl flex items-center justify-center space-x-3 group"
+            >
+                <span>Kirim Pesan & Hubungi via WhatsApp</span>
+                <svg
+                    class="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="3"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+            </button>
+
+            <div
+                id="form-status"
+                class="hidden text-center p-4 rounded-2xl font-bold text-sm"
+            >
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById("main-contact-form");
+    const statusDiv = document.getElementById("form-status");
+    const submitBtn = document.getElementById("submit-btn");
+
+    form?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form as HTMLFormElement);
+        const data = {
+            nama: formData.get("nama"),
+            email: formData.get("email"),
+            layanan: formData.get("layanan"),
+            pesan: formData.get("pesan"),
+        };
+
+        // Update UI status
+        submitBtn!.innerHTML = "<span>Memproses...</span>";
+        submitBtn!.style.opacity = "0.7";
+        submitBtn!.style.pointerEvents = "none";
+
+        try {
+            const response = await fetch(
+                "http://localhost/profile_syntaxtrust/api/contact.php",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    body: new URLSearchParams(data as any).toString(),
+                },
+            );
+
+            const result = await response.json();
+
+            if (result.success) {
+                statusDiv!.innerText =
+                    "Pesan tersimpan! Mengarahkan ke WhatsApp...";
+                statusDiv!.className =
+                    "block text-center p-4 rounded-2xl font-bold text-sm bg-green-500/10 text-green-500";
+
+                // Buat pesan WhatsApp
+                const waMessage = `Halo SyntaxTrust, saya ${data.nama}.\n\nSaya tertarik dengan layanan: ${data.layanan}.\n\nPesan: ${data.pesan}`;
+                const waLink = `https://wa.me/6281234567890?text=${encodeURIComponent(waMessage)}`;
+
+                setTimeout(() => {
+                    window.open(waLink, "_blank");
+                    (form as HTMLFormElement).reset();
+                    submitBtn!.innerHTML =
+                        "<span>Kirim Pesan & Hubungi via WhatsApp</span>";
+                    submitBtn!.style.opacity = "1";
+                    submitBtn!.style.pointerEvents = "auto";
+                }, 1500);
+            } else {
+                throw new Error(result.error || "Terjadi kesalahan");
+            }
+        } catch (err: any) {
+            statusDiv!.innerText = "Error: " + err.message;
+            statusDiv!.className =
+                "block text-center p-4 rounded-2xl font-bold text-sm bg-red-500/10 text-red-500";
+            submitBtn!.innerHTML =
+                "<span>Kirim Pesan & Hubungi via WhatsApp</span>";
+            submitBtn!.style.opacity = "1";
+            submitBtn!.style.pointerEvents = "auto";
+        }
+    });
+</script>

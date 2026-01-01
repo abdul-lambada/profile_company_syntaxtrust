@@ -48,5 +48,21 @@ $q4 = "CREATE TABLE IF NOT EXISTS pesan (
 )";
 mysqli_query($conn, $q4);
 
-echo "Struktur database dengan bahasa Indonesia berhasil disiapkan.";
+// Tabel Pengguna (Admin)
+$q5 = "CREATE TABLE IF NOT EXISTS pengguna (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    nama_lengkap VARCHAR(100)
+)";
+mysqli_query($conn, $q5);
+
+// Masukkan admin default jika belum ada
+$check_user = mysqli_query($conn, "SELECT * FROM pengguna WHERE username='admin'");
+if(mysqli_num_rows($check_user) == 0){
+    $pass_default = password_hash("admin", PASSWORD_DEFAULT);
+    mysqli_query($conn, "INSERT INTO pengguna (username, password, nama_lengkap) VALUES ('admin', '$pass_default', 'Admin SyntaxTrust')");
+}
+
+echo "Struktur database dengan bahasa Indonesia & tabel pengguna berhasil disiapkan.";
 ?>

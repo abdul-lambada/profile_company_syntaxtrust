@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ContactForm from "../components/ContactForm.astro";
 import { partners } from "../data/products";
 
 // Ambil data dinamis dari Backend PHP
@@ -448,26 +449,27 @@ const webClients: any[] = responseWeb ? await responseWeb.json() : [];
       </div>
     </div>
   </section>
-  <section class="py-40 relative">
+  <section id="kontak" class="py-40 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-20 reveal-on-scroll">
+        <h2
+          class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 tracking-tighter leading-[1.1]"
+        >
+          Mulai Transformasi <br /> Digital <span class="gradient-text italic"
+            >Sekarang</span
+          >
+        </h2>
+        <p class="text-gray-400 text-lg">
+          Konsultasikan kebutuhan sistem sekolah atau website kustom Anda. Tim
+          ahli kami siap memberikan solusi terbaik.
+        </p>
+      </div>
+
       <div
-        class="relative bg-white rounded-[5rem] p-16 md:p-32 overflow-hidden shadow-[0_0_100px_rgba(0,48,135,0.2)] reveal-on-scroll"
+        class="max-w-4xl mx-auto reveal-on-scroll"
+        style="transition-delay: 200ms;"
       >
-        <div class="relative z-10 text-center">
-          <h2
-            class="text-4xl md:text-5xl lg:text-6xl font-black text-black mb-12 tracking-tighter leading-[1.1]"
-          >
-            Siap Melangkah <br /> Bersama <span
-              class="bg-gradient-to-r from-syntax-accent to-syntax-emerald bg-clip-text text-transparent italic"
-              >SyntaxTrust?</span
-            >
-          </h2>
-          <button
-            class="bg-black text-white hover:bg-[#003087] px-12 py-5 rounded-[2rem] font-black text-xl transition-all reveal-on-scroll"
-          >
-            Konsultasi Sekarang
-          </button>
-        </div>
+        <ContactForm />
       </div>
     </div>
   </section>

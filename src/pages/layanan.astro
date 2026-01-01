@@ -1,6 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { products } from "../data/products";
+
+const response = await fetch(
+    "http://localhost/profile_syntaxtrust/api/data.php?aksi=produk",
+).catch(() => null);
+const products: any[] = response ? await response.json() : [];
 ---
 
 <Layout
@@ -56,50 +60,53 @@ import { products } from "../data/products";
 
                             <div class="mb-12">
                                 <h3 class="text-gray-500 font-black uppercase tracking-[0.3em] text-[10px] mb-4">
-                                    EDISI {product.category}
+                                    EDISI {product.kategori}
                                 </h3>
                                 <div class="flex items-baseline space-x-1">
                                     <span class="text-5xl lg:text-5xl font-black tracking-tighter text-white">
-                                        {product.price}
+                                        {product.harga}
                                     </span>
-                                    {product.price !== "Custom" &&
-                                        product.price !== "Nego" && (
+                                    {product.harga !== "Custom" &&
+                                        product.harga !== "Nego" && (
                                             <span class="text-gray-500 text-sm font-bold">
-                                                /thn
+                                                /Proyek
                                             </span>
                                         )}
                                 </div>
                                 <p class="text-gray-400 mt-6 font-medium text-sm leading-relaxed">
-                                    {product.description}
+                                    {product.deskripsi}
                                 </p>
                             </div>
 
                             <div class="h-px w-full bg-white/5 mb-10 group-hover:bg-syntax-emerald/30 transition-colors" />
 
                             <ul class="space-y-6 mb-16 flex-grow">
-                                {product.features.map((feature) => (
-                                    <li class="flex items-center space-x-4 text-sm font-bold text-gray-300">
-                                        <div class="w-6 h-6 rounded-xl bg-white/5 flex items-center justify-center text-syntax-emerald group-hover:bg-syntax-emerald group-hover:text-white transition-all">
-                                            <svg
-                                                class="w-3.5 h-3.5"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                viewBox="0 0 24 24"
-                                            >
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    stroke-width="3"
-                                                    d="M5 13l4 4L19 7"
-                                                />
-                                            </svg>
-                                        </div>
-                                        <span>{feature}</span>
-                                    </li>
-                                ))}
+                                {product.fitur &&
+                                    Array.isArray(product.fitur) &&
+                                    product.fitur.map((feature: string) => (
+                                        <li class="flex items-center space-x-4 text-sm font-bold text-gray-300">
+                                            <div class="w-6 h-6 rounded-xl bg-white/5 flex items-center justify-center text-syntax-emerald group-hover:bg-syntax-emerald group-hover:text-white transition-all">
+                                                <svg
+                                                    class="w-3.5 h-3.5"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="3"
+                                                        d="M5 13l4 4L19 7"
+                                                    />
+                                                </svg>
+                                            </div>
+                                            <span>{feature}</span>
+                                        </li>
+                                    ))}
                             </ul>
 
-                            <button
+                            <a
+                                href="/#kontak"
                                 class={`w-full py-5 rounded-2xl font-black transition-all flex items-center justify-center space-x-3 group/btn ${product.id === "sik-sekolah" ? "bg-syntax-emerald text-white shadow-2xl" : "bg-white/5 hover:bg-white/10 text-white border border-white/10"}`}
                             >
                                 <span>Hubungi Sekarang</span>
@@ -116,7 +123,7 @@ import { products } from "../data/products";
                                         d="M14 5l7 7m0 0l-7 7m7-7H3"
                                     />
                                 </svg>
-                            </button>
+                            </a>
                         </div>
                     ))
                 }
@@ -142,7 +149,9 @@ import { products } from "../data/products";
                         efisien dan skalabel.
                     </p>
                 </div>
-                <a href="#" class="btn-primary shrink-0">Konsultasi Gratis</a>
+                <a href="/#kontak" class="btn-primary shrink-0"
+                    >Konsultasi Gratis</a
+                >
             </div>
         </div>
     </section>
