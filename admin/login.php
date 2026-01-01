@@ -1,15 +1,20 @@
 <?php
 session_start();
-include '../api/db.php';
+include_once '../api/db.php';
 
 $error = "";
 if(isset($_POST['login'])){
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $result = mysqli_query($conn, "SELECT * FROM pengguna WHERE username='$username'");
-    if(mysqli_num_rows($result) === 1){
-        $user = mysqli_fetch_assoc($result);
+    // Menggunakan Prepared Statements untuk keamanan maksimal
+    $stmt = $conn->prepare("SELECT * FROM pengguna WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if($result->num_rows === 1){
+        $user = $result->fetch_assoc();
         if(password_verify($password, $user['password'])){
             $_SESSION['admin_logged_in'] = true;
             $_SESSION['admin_id'] = $user['id'];
