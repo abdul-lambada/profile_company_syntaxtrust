@@ -16,6 +16,8 @@ import ValueProp from "../components/ValueProp.astro";
 import TrustBadges from "../components/TrustBadges.astro";
 import ClientMap from "../components/ClientMap.astro";
 import MobileApp from "../components/MobileApp.astro";
+import DemoModal from "../components/DemoModal.astro";
+import HowItWorks from "../components/HowItWorks.astro";
 ---
 
 <Layout title="SIKES - Sistem Informasi Keuangan Sekolah">
@@ -25,10 +27,12 @@ import MobileApp from "../components/MobileApp.astro";
 		<Hero />
 		<ValueProp />
 		<ReportModal />
+		<DemoModal />
 		<Features />
 		<Comparison />
 		<MobileApp />
 		<Solution />
+		<HowItWorks />
 		<Stats />
 		<ClientMap />
 		<TrustBadges />
@@ -61,12 +65,12 @@ import MobileApp from "../components/MobileApp.astro";
 					class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in delay-200"
 				>
 					<button
-						class="w-full sm:w-auto px-10 py-5 bg-white text-emerald-600 font-bold rounded-2xl shadow-2xl hover:bg-emerald-50 transition-all active:scale-95 text-lg text-center"
+						class="open-demo-btn w-full sm:w-auto px-10 py-5 bg-white text-emerald-600 font-bold rounded-2xl shadow-2xl hover:bg-emerald-50 transition-all active:scale-95 text-lg text-center"
 					>
 						Daftar Sekarang
 					</button>
 					<button
-						class="w-full sm:w-auto px-10 py-5 bg-emerald-700 text-white font-bold rounded-2xl hover:bg-emerald-800 transition-all active:scale-95 text-lg text-center"
+						class="open-demo-btn w-full sm:w-auto px-10 py-5 bg-emerald-700 text-white font-bold rounded-2xl hover:bg-emerald-800 transition-all active:scale-95 text-lg text-center"
 					>
 						Jadwalkan Demo
 					</button>

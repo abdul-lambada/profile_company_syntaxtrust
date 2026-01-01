@@ -1,12 +1,15 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 
 interface Props {
 	title: string;
 	description?: string;
 }
 
-const { title, description = "SIKES - Sistem Informasi Keuangan Sekolah Modern" } = Astro.props;
+const {
+	title,
+	description = "SIKES - Sistem Informasi Keuangan Sekolah Modern",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -18,12 +21,29 @@ const { title, description = "SIKES - Sistem Informasi Keuangan Sekolah Modern" 
 		<meta name="generator" content={Astro.generator} />
 		<title>{title} | SIKES</title>
 		<meta name="description" content={description} />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="/og-image.png" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content="/og-image.png" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
 		<style>
 			body {
-				font-family: 'Plus Jakarta Sans', sans-serif;
+				font-family: "Plus Jakarta Sans", sans-serif;
 			}
 		</style>
 	</head>

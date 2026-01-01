@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sikes.syntaxtrust.com/sitemap-index.xml
