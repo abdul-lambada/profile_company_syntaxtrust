@@ -64,6 +64,14 @@ const brandAccent = nameParts.slice(1).join("") || "Trust";
     <meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
 
     <link rel="canonical" href={Astro.url} />
+
+    <!-- Leaflet Map Assets -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" is:inline
+    ></script>
   </head>
   <body
     class="bg-syntax-dark selection:bg-syntax-accent/30 selection:text-white"

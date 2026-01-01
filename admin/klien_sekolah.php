@@ -22,8 +22,13 @@ if (isset($_GET['edit'])) {
 if (isset($_POST['simpan'])) {
     $nama = $_POST['nama'];
     $kota = $_POST['kota'];
-    $lat = $_POST['lat'];
-    $lng = $_POST['lng'];
+    // Bersihkan nilai lat/lng dari spasi atau koma yang tidak sengaja terikut
+    $lat = trim(str_replace(',', '.', $_POST['lat']));
+    $lng = trim(str_replace(',', '.', $_POST['lng']));
+    
+    // Pastikan hanya mengambil angka/titik/minus dan ubah ke float untuk membuang karakter sampah (seperti titik di akhir)
+    $lat = (float)preg_replace('/[^0-9.\-]/', '', $lat);
+    $lng = (float)preg_replace('/[^0-9.\-]/', '', $lng);
     
     $is_edit = !empty($_POST['edit_id']);
 
