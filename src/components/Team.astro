@@ -1,0 +1,108 @@
+---
+const team = [
+    {
+        name: "Abdul Kholik",
+        role: "Founder & Lead Developer",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400&h=400",
+        quote: "Misi kami bukan sekadar membuat software, tapi membangun budaya transparansi dan akuntabilitas di pendidikan Indonesia.",
+    },
+    {
+        name: "Sarah Wijaya",
+        role: "Head of Customer Success",
+        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=400&h=400",
+        quote: "Kami memastikan setiap bendahara sekolah, se-awam apapun dengan teknologi, bisa menggunakan SIKES dalam waktu kurang dari 1 jam.",
+    },
+    {
+        name: "Rudi Hartono",
+        role: "Senior Security Engineer",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400&h=400",
+        quote: "Keamanan data finansial sekolah adalah prioritas mutlak. Kami menerapkan standar enkripsi setara perbankan.",
+    },
+];
+---
+
+<section id="team" class="py-24 bg-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+            <div class="animate-fade-in">
+                <span
+                    class="text-indigo-600 font-bold text-sm uppercase tracking-widest bg-indigo-50 px-4 py-1 rounded-full mb-6 inline-block"
+                    >Tim Kami</span
+                >
+                <h2
+                    class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight"
+                >
+                    Karya Anak Bangsa untuk <span class="text-emerald-600"
+                        >Pendidikan Indonesia</span
+                    >
+                </h2>
+                <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                    SIKES lahir dari keresahan kami melihat banyaknya sekolah
+                    yang masih kesulitan dalam pengelolaan administrasi keuangan
+                    yang manual dan rawan kesalahan.
+                </p>
+                <p class="text-slate-600 text-lg leading-relaxed">
+                    Kami menggabungkan pemahaman mendalam tentang alur tata
+                    usaha sekolah dengan teknologi keamanan modern. Hasilnya
+                    adalah sistem yang tidak hanya canggih, tapi juga <strong
+                        >mengerti kebutuhan bendahara sekolah</strong
+                    >.
+                </p>
+            </div>
+            <div class="relative animate-fade-in delay-100">
+                <div
+                    <div
+                    class="absolute inset-0 bg-linear-to-tr from-emerald-100 to-indigo-100 rounded-3xl transform rotate-3 -z-10"
+                >
+                </div>
+                >
+            </div>
+            <img
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800"
+                alt="Tim SIKES berdiskusi"
+                class="rounded-3xl shadow-2xl w-full object-cover h-[400px]"
+            />
+        </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+        {
+            team.map((member, index) => (
+                <div
+                    class={`group relative bg-slate-50 rounded-3xl p-8 transition-all hover:-translate-y-2 hover:shadow-xl border border-slate-100 animate-fade-in delay-${index * 100 + 200}`}
+                >
+                    <div class="absolute top-8 right-8 text-indigo-200 group-hover:text-indigo-600 transition-colors">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-10 h-10"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path d="M14.017 21L14.017 18C14.017 16.8954 13.1216 16 12.017 16H9.01703C7.91246 16 7.01703 16.8954 7.01703 18V21H2.01703V18C2.01703 14.134 5.15103 11 9.01703 11H12.017C15.883 11 19.017 14.134 19.017 18V21H14.017ZM24.017 6H20.017V2H18.017V6H14.017V8H18.017V12H20.017V8H24.017V6Z" />
+                        </svg>
+                    </div>
+
+                    <div class="mb-6 relative">
+                        <div class="w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                            <img
+                                src={member.image}
+                                alt={member.name}
+                                class="w-full h-full object-cover"
+                            />
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-slate-900 mb-1">
+                        {member.name}
+                    </h3>
+                    <p class="text-emerald-600 font-bold text-xs uppercase tracking-wider mb-4">
+                        {member.role}
+                    </p>
+                    <p class="text-slate-600 italic text-sm leading-relaxed">
+                        "{member.quote}"
+                    </p>
+                </div>
+            ))
+        }
+    </div>
+</section>
