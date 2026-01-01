@@ -352,13 +352,14 @@
 
     // Check if button exists (it's in Hero.astro)
     // We'll use a globally available event instead or look for it
-    document.addEventListener("click", (e) => {
+    closeBtn?.addEventListener("click", () => toggleModal(false));
+    backdrop?.addEventListener("click", () => toggleModal(false));
+
+    // Fix implicit any type error for e
+    document.addEventListener("click", (e: MouseEvent) => {
         const target = e.target as HTMLElement;
         if (target.closest("#open-report-btn")) {
             toggleModal(true);
         }
     });
-
-    closeBtn?.addEventListener("click", () => toggleModal(false));
-    backdrop?.addEventListener("click", () => toggleModal(false));
 </script>
