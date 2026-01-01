@@ -1,0 +1,62 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import Features from "../components/Features.astro";
+import Solution from "../components/Solution.astro";
+import Stats from "../components/Stats.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="SIKES - Sistem Informasi Keuangan Sekolah">
+	<Navbar />
+	<main class="overflow-hidden">
+		<Hero />
+		<Features />
+		<Solution />
+		<Stats />
+
+		<!-- CTA Section -->
+		<section class="py-24 relative overflow-hidden">
+			<div class="absolute inset-0 bg-emerald-600 -z-10"></div>
+			<div
+				class="absolute top-0 left-0 w-full h-full opacity-10 -z-10"
+				style="background-image: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, transparent 20%), radial-gradient(circle at 90% 80%, rgb(0, 0, 0) 0%, transparent 20%);"
+			>
+			</div>
+
+			<div class="max-w-4xl mx-auto px-6 text-center">
+				<h2
+					class="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight animate-fade-in"
+				>
+					Siap Modernisasi Keuangan Sekolah Anda?
+				</h2>
+				<p
+					class="text-emerald-100 text-lg mb-12 animate-fade-in delay-100"
+				>
+					Bergabunglah dengan ratusan sekolah yang telah beralih ke
+					pengelolaan digital yang transparan dan akuntabel.
+				</p>
+				<div
+					class="flex flex-col sm:row items-center justify-center gap-4 animate-fade-in delay-200"
+				>
+					<button
+						class="w-full sm:w-auto px-10 py-5 bg-white text-emerald-600 font-bold rounded-2xl shadow-2xl hover:bg-emerald-50 transition-all active:scale-95 text-lg"
+					>
+						Daftar Sekarang
+					</button>
+					<button
+						class="w-full sm:w-auto px-10 py-5 bg-emerald-700 text-white font-bold rounded-2xl hover:bg-emerald-800 transition-all active:scale-95 text-lg"
+					>
+						Jadwalkan Demo
+					</button>
+				</div>
+			</div>
+		</section>
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	/* Any page-specific styles */
+</style>

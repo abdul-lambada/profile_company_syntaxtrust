@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: theme('colors.slate.900');
+    --color-secondary: theme('colors.emerald.500');
+    --color-accent: theme('colors.indigo.600');
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-slate-50 text-slate-900 font-sans antialiased;
+    }
+}
+
+@layer components {
+    .btn {
+        @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:pointer-events-none;
+    }
+
+    .btn-primary {
+        @apply bg-slate-900 text-white hover:bg-slate-800 shadow-sm hover:shadow-md;
+    }
+
+    .btn-secondary {
+        @apply bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm hover:shadow-md;
+    }
+
+    .btn-outline {
+        @apply border border-slate-200 bg-white text-slate-600 hover:bg-slate-50;
+    }
+
+    .card {
+        @apply bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden;
+    }
+
+    .glass {
+        @apply bg-white/70 backdrop-blur-md border border-white/20;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 rounded-full hover:bg-slate-400;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.delay-100 {
+    animation-delay: 100ms;
+}
+
+.delay-200 {
+    animation-delay: 200ms;
+}
+
+.delay-300 {
+    animation-delay: 300ms;
+}
