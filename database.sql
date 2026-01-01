@@ -1,5 +1,6 @@
 -- Database for SyntaxTrust Company Profile
 -- Created: 2026-01-01
+-- With Dummy Data for Demonstrations
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -8,7 +9,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produk` (Layanan & Produk)
+-- Table structure for table `produk`
 --
 
 CREATE TABLE `produk` (
@@ -23,10 +24,18 @@ CREATE TABLE `produk` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `produk`
+--
+
+INSERT INTO `produk` (`id`, `nama`, `kategori`, `harga`, `deskripsi`, `fitur`, `file_panduan`, `id_youtube`) VALUES
+('sik-sekolah', 'EDISI Enterprise', 'Enterprise', 'Rp 15jt', 'Sistem Informasi Keuangan Sekolah (SIK) terintegrasi untuk manajemen SPP, Gaji, dan Inventaris yang presisi.', '[\"Manajemen SPP Digital\",\"Laporan Keuangan Real-time\",\"Sistem Penggajian Guru\",\"Integrasi Bank/Payment Gateway\",\"Dashboard Mobile Monitoring\"]', NULL, 'dQw4w9WgXcQ'),
+('web-custom', 'EDISI Creative', 'Creative', 'Nego', 'Jasa pembuatan website premium dengan desain kustom, animasi halus, dan optimasi performa tinggi.', '[\"Desain UI/UX Eksklusif\",\"Animasi Framer Motion\",\"Optimasi SEO Berkelanjutan\",\"Panel Admin Kustom\",\"Hosting & Domain Gratis 1 Thn\"]', NULL, 'dQw4w9WgXcQ');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `klien_sekolah` (Peta Jaringan)
+-- Table structure for table `klien_sekolah`
 --
 
 CREATE TABLE `klien_sekolah` (
@@ -38,10 +47,20 @@ CREATE TABLE `klien_sekolah` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `klien_sekolah`
+--
+
+INSERT INTO `klien_sekolah` (`nama`, `kota`, `lat`, `lng`) VALUES
+('SMA Negeri 1 Jakarta', 'Jakarta Pusat', -6.16850000, 106.83310000),
+('SMK Telkom Malang', 'Malang', -7.97850000, 112.65670000),
+('SMA Al-Azhar Pusat', 'Jakarta Selatan', -6.23510000, 106.79930000),
+('SMA Negeri 3 Bandung', 'Bandung', -6.90770000, 107.61170000);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `klien_web` (Portofolio Website)
+-- Table structure for table `klien_web`
 --
 
 CREATE TABLE `klien_web` (
@@ -57,10 +76,18 @@ CREATE TABLE `klien_web` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `klien_web`
+--
+
+INSERT INTO `klien_web` (`id`, `nama`, `gambar`, `kategori`, `tahun`, `deskripsi`, `tantangan`, `solusi`, `url`) VALUES
+('indo-furniture', 'indo-furniture', NULL, 'E-Commerce', '2023', 'Platform jual beli furniture kelas atas dengan integrasi VR View.', 'Sistem loading yang lambat karena gambar 4K dalam jumlah besar.', 'Implementasi Next.js Image Optimization dan Progressive Loading.', 'https://example.com'),
+('klinik-sehat', 'klinik-sehat', NULL, 'Healtcare', '2022', 'Sistem pendaftaran pasien online dan manajemen rekam medis digital.', 'Sinkronisasi data pasien secara real-time antar cabang.', 'Penggunaan WebSockets dan Database Cluster.', 'https://example.com');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mitra` (Logo Partner Strategis)
+-- Table structure for table `mitra`
 --
 
 CREATE TABLE `mitra` (
@@ -70,10 +97,20 @@ CREATE TABLE `mitra` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `mitra`
+--
+
+INSERT INTO `mitra` (`nama`, `logo`) VALUES
+('Google Cloud', NULL),
+('AWS Hosting', NULL),
+('Midtrans Payment', NULL),
+('Cloudflare', NULL);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pesan` (Formulir Kontak)
+-- Table structure for table `pesan`
 --
 
 CREATE TABLE `pesan` (
@@ -87,10 +124,18 @@ CREATE TABLE `pesan` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `pesan`
+--
+
+INSERT INTO `pesan` (`nama`, `email`, `layanan`, `isi_pesan`, `status`) VALUES
+('Budi Santoso', 'budi@perusahaan.com', 'EDISI Enterprise', 'Halo, kami tertarik untuk menggunakan sistem SIK di sekolah kami. Mohon kirim proposal.', 'baru'),
+('Siti Aminah', 'siti@sekolah.sch.id', 'Custom UI/UX', 'Ingin bertanya mengenai harga pembuatan website untuk instansi sekolah saya.', 'dibaca');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengaturan` (Konfigurasi Situs)
+-- Table structure for table `pengaturan`
 --
 
 CREATE TABLE `pengaturan` (
@@ -112,7 +157,7 @@ INSERT INTO `pengaturan` (`kunci`, `nilai`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengguna` (Admin Dashboard)
+-- Table structure for table `pengguna`
 --
 
 CREATE TABLE `pengguna` (
@@ -127,7 +172,7 @@ CREATE TABLE `pengguna` (
 --
 -- Dumping data for table `pengguna`
 --
--- Password is 'admin' (hashed)
+
 INSERT INTO `pengguna` (`id`, `username`, `password`, `nama_lengkap`) VALUES
 (1, 'admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Admin SyntaxTrust');
 
