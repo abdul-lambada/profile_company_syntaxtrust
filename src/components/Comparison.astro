@@ -1,0 +1,116 @@
+---
+const comparisons = [
+  {
+    feature: "Proses Pembayaran",
+    manual: "Antrean panjang di loket sekolah, hanya di jam kerja.",
+    sikes: "Bayar dari mana saja 24/7 via Mobile Banking, VA, atau QRIS.",
+    icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+  },
+  {
+    feature: "Validasi & Rekap",
+    manual: "Staf harus cek manual satu per satu, rawan salah catat.",
+    sikes: "Otomatis terverifikasi sistem, rekap data 100% akurat.",
+    icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+  },
+  {
+    feature: "Kecepatan Laporan",
+    manual: "Butuh berhari-hari untuk tarik rekap bulanan/tahunan.",
+    sikes: "Laporan real-time, siap unduh dalam hitungan detik.",
+    icon: "M9 17v-2m3 2v-4m3 4v-6m2 10H5a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+  },
+  {
+    feature: "Notifikasi Wali Murid",
+    manual: "Harus telepon atau titip surat ke siswa (sering hilang).",
+    sikes: "WhatsApp otomatis terkirim saat tagihan muncul & lunas.",
+    icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+  }
+];
+---
+
+<section class="py-24 bg-slate-50 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-rose-600 font-bold text-sm uppercase tracking-widest bg-rose-50 px-4 py-1 rounded-full mb-4 inline-block">Kenapa Harus Pindah?</span>
+      <h2 class="text-4xl font-bold text-slate-900 mb-4">Efisiensi SIKES vs Cara Manual</h2>
+      <p class="text-slate-600 max-w-2xl mx-auto text-lg">Lihat perbandingan nyata bagaimana SIKES mengubah beban administrasi menjadi otomasi yang cerdas.</p>
+    </div>
+
+    <div class="grid gap-6 md:gap-0 md:flex md:flex-col rounded-[32px] overflow-hidden border border-slate-200 shadow-2xl bg-white">
+      <!-- Table Header -->
+      <div class="hidden md:flex bg-slate-900 text-white font-bold text-sm uppercase tracking-widest px-8 py-6">
+        <div class="w-1/4">Fitur Utama</div>
+        <div class="w-3/8 text-rose-400">Metode Manual / Excel</div>
+        <div class="w-3/8 text-emerald-400">SIKES (Premium System)</div>
+      </div>
+
+      <!-- Mobile & Desktop Rows -->
+      {comparisons.map((item, i) => (
+        <div class={`flex flex-col md:flex-row px-8 py-8 md:py-10 border-b border-slate-100 last:border-0 hover:bg-slate-50/50 transition-colors group ${i % 2 === 0 ? 'bg-white' : 'bg-slate-50/30'}`}>
+          <!-- Feature Name -->
+          <div class="w-full md:w-1/4 mb-6 md:mb-0">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center shrink-0 group-hover:bg-slate-900 group-hover:text-white transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={item.icon} />
+                </svg>
+              </div>
+              <span class="font-bold text-slate-800 text-lg md:text-base">{item.feature}</span>
+            </div>
+          </div>
+
+          <!-- Manual Column -->
+          <div class="w-full md:w-3/8 mb-6 md:mb-0 md:pr-12">
+            <div class="md:hidden text-xs font-bold text-rose-500 uppercase mb-2">Metode Manual</div>
+            <div class="flex gap-3">
+              <div class="mt-1 shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </div>
+              <p class="text-slate-500 leading-relaxed text-sm md:text-base">{item.manual}</p>
+            </div>
+          </div>
+
+          <!-- SIKES Column -->
+          <div class="w-full md:w-3/8">
+            <div class="md:hidden text-xs font-bold text-emerald-500 uppercase mb-2">SIKES System</div>
+            <div class="flex gap-3">
+              <div class="mt-1 shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <p class="font-medium text-slate-800 leading-relaxed text-sm md:text-base">{item.sikes}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom Badge -->
+    <div class="mt-12 flex flex-col md:flex-row items-center justify-center gap-6">
+        <div class="px-6 py-4 bg-emerald-50 rounded-2xl border border-emerald-100 flex items-center gap-4 group hover:bg-emerald-100 transition-colors">
+            <div class="w-12 h-12 bg-emerald-500 text-white rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/20">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+            </div>
+            <div>
+                <p class="text-[10px] font-bold text-emerald-600 uppercase tracking-widest mb-1">Peningkatan Efisiensi</p>
+                <p class="text-slate-800 font-bold leading-tight">Hingga 80% Lebih Cepat dari Excel</p>
+            </div>
+        </div>
+        <div class="px-6 py-4 bg-indigo-50 rounded-2xl border border-indigo-100 flex items-center gap-4 group hover:bg-indigo-100 transition-colors">
+            <div class="w-12 h-12 bg-indigo-600 text-white rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+            </div>
+            <div>
+                <p class="text-[10px] font-bold text-indigo-600 uppercase tracking-widest mb-1">Keamanan Data</p>
+                <p class="text-slate-800 font-bold leading-tight">Enkripsi Berlapis Standard Bank</p>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>

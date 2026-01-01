@@ -9,21 +9,22 @@ const navLinks = [
 
 <nav
     id="main-nav"
-    class="fixed top-0 sm:top-11 left-0 right-0 z-50 transition-all duration-300 px-6 py-4"
+    class="fixed top-0 sm:top-11 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 py-4"
 >
     <div class="max-w-7xl mx-auto flex items-center justify-between">
         <div class="flex items-center gap-2 group cursor-pointer">
             <div
-                class="w-10 h-10 bg-slate-900 rounded-xl flex items-center justify-center group-hover:bg-emerald-500 transition-colors duration-300"
+                class="w-8 h-8 sm:w-10 sm:h-10 bg-slate-900 rounded-xl flex items-center justify-center group-hover:bg-emerald-500 transition-colors duration-300"
             >
-                <span class="text-white font-bold text-xl">S</span>
+                <span class="text-white font-bold text-lg sm:text-xl">S</span>
             </div>
             <div class="flex flex-col leading-tight">
-                <span class="font-bold text-xl text-slate-800 tracking-tight"
+                <span
+                    class="font-bold text-lg sm:text-xl text-slate-800 tracking-tight"
                     >SIKES</span
                 >
                 <span
-                    class="text-[10px] uppercase tracking-widest text-emerald-600 font-bold"
+                    class="text-[8px] sm:text-[10px] uppercase tracking-widest text-emerald-600 font-bold"
                     >Premium System</span
                 >
             </div>
@@ -36,21 +37,23 @@ const navLinks = [
                 navLinks.map((link) => (
                     <a
                         href={link.href}
-                        class="text-sm font-semibold text-slate-600 hover:text-emerald-600 transition-colors uppercase tracking-wider"
+                        class="nav-link text-sm font-semibold text-slate-600 hover:text-emerald-600 transition-all uppercase tracking-wider relative group/link"
                     >
                         {link.name}
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover/link:w-full active-indicator" />
                     </a>
                 ))
             }
         </div>
 
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-3">
             <button
-                class="btn btn-primary text-sm px-6 py-2.5 rounded-full shadow-lg shadow-slate-900/10 active:scale-95 transition-all"
+                class="hidden sm:block btn btn-primary text-xs sm:text-sm px-4 sm:px-6 py-2 sm:py-2.5 rounded-full shadow-lg shadow-slate-900/10 active:scale-95 transition-all"
             >
                 Coba Demo Gratis
             </button>
             <button
+                id="menu-toggle"
                 class="md:hidden text-slate-800 p-2 hover:bg-slate-50 rounded-xl transition-all"
             >
                 <svg
@@ -69,10 +72,64 @@ const navLinks = [
             </button>
         </div>
     </div>
+
+    <!-- Mobile Menu -->
+    <div
+        id="mobile-menu"
+        class="hidden absolute top-full left-0 right-0 bg-white border-b border-slate-100 shadow-xl p-4 flex-col gap-2 md:hidden animate-fade-in"
+    >
+        {
+            navLinks.map((link) => (
+                <a
+                    href={link.href}
+                    class="block px-4 py-3 text-slate-600 font-bold hover:bg-slate-50 rounded-xl"
+                >
+                    {link.name}
+                </a>
+            ))
+        }
+        <button
+            class="w-full mt-2 btn btn-primary text-sm py-3 rounded-xl shadow-lg shadow-slate-900/10"
+        >
+            Coba Demo Gratis
+        </button>
+    </div>
 </nav>
+
+<style>
+    @reference "tailwindcss";
+
+    .nav-link.active {
+        @apply text-emerald-600;
+    }
+    .nav-link.active .active-indicator {
+        @apply w-full;
+    }
+</style>
 
 <script>
     const nav = document.getElementById("main-nav");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const sections = document.querySelectorAll("section[id]");
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    // Toggle Mobile Menu
+    menuToggle?.addEventListener("click", () => {
+        mobileMenu?.classList.toggle("hidden");
+        mobileMenu?.classList.toggle("flex");
+    });
+
+    // Close Mobile Menu on Link Click
+    const mobileLinks = mobileMenu?.querySelectorAll("a");
+    mobileLinks?.forEach((link) => {
+        link.addEventListener("click", () => {
+            mobileMenu?.classList.add("hidden");
+            mobileMenu?.classList.remove("flex");
+        });
+    });
+
+    // Scroll Handler for sticky navbar
     window.addEventListener("scroll", () => {
         if (window.scrollY > 20) {
             nav?.classList.add(
@@ -82,7 +139,7 @@ const navLinks = [
                 "py-3",
                 "!top-0",
             );
-            nav?.classList.remove("py-4", "sm:top-11", "bg-white/50");
+            nav?.classList.remove("py-4", "sm:top-11");
         } else {
             nav?.classList.remove(
                 "bg-white/90",
@@ -94,4 +151,31 @@ const navLinks = [
             nav?.classList.add("py-4", "sm:top-11");
         }
     });
+
+    // Active Menu Handler
+    const observerOptions = {
+        root: null,
+        rootMargin: "-20% 0px -70% 0px",
+        threshold: 0,
+    };
+
+    const observerCallback = (entries: any[]) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute("id");
+                navLinks.forEach((link) => {
+                    link.classList.toggle(
+                        "active",
+                        link.getAttribute("href") === `#${id}`,
+                    );
+                });
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(
+        observerCallback,
+        observerOptions,
+    );
+    sections.forEach((section) => observer.observe(section));
 </script>
