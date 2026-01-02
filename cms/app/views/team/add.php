@@ -16,28 +16,18 @@
                                 <input type="text" class="form-control" id="nama" name="nama" placeholder="Contoh: Andi Pratama" required />
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" for="posisi">Posisi / Jabatan</label>
-                                <input type="text" class="form-control" id="posisi" name="posisi" placeholder="Contoh: Lead Developer" required />
+                                <label class="form-label" for="jabatan">Jabatan</label>
+                                <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="Contoh: Lead Developer" required />
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" for="foto_path">URL Foto</label>
-                                <input type="text" class="form-control" id="foto_path" name="foto_path" placeholder="https://example.com/photo.jpg" />
+                                <label class="form-label" for="url_foto">URL Foto</label>
+                                <input type="text" class="form-control" id="url_foto" name="url_foto" placeholder="https://example.com/photo.jpg" />
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label class="form-label" for="link_linkedin">Link LinkedIn</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bx bxl-linkedin-square"></i></span>
-                                    <input type="text" class="form-control" id="link_linkedin" name="link_linkedin" placeholder="https://linkedin.com/in/username" />
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label" for="link_instagram">Link Instagram</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bx bxl-instagram-alt"></i></span>
-                                    <input type="text" class="form-control" id="link_instagram" name="link_instagram" placeholder="https://instagram.com/username" />
-                                </div>
+                                <label class="form-label" for="kutipan">Kutipan</label>
+                                <textarea class="form-control" id="kutipan" name="kutipan" rows="4" placeholder="Kutipan inspiratif..." required></textarea>
                             </div>
                              <div class="mb-3">
                                 <label class="form-label" for="urutan">Urutan</label>

@@ -37,10 +37,9 @@ class Team extends Controller {
 
             $data = [
                 'nama' => trim($_POST['nama']),
-                'posisi' => trim($_POST['posisi']),
-                'foto_path' => trim($_POST['foto_path']),
-                'link_linkedin' => trim($_POST['link_linkedin']),
-                'link_instagram' => trim($_POST['link_instagram']),
+                'jabatan' => trim($_POST['jabatan']),
+                'url_foto' => trim($_POST['url_foto']),
+                'kutipan' => trim($_POST['kutipan']),
                 'urutan' => (int)trim($_POST['urutan'])
             ];
 
@@ -53,10 +52,9 @@ class Team extends Controller {
             $data = [
                 'title' => 'Tambah Anggota Tim',
                 'nama' => '',
-                'posisi' => '',
-                'foto_path' => '',
-                'link_linkedin' => '',
-                'link_instagram' => '',
+                'jabatan' => '',
+                'url_foto' => '',
+                'kutipan' => '',
                 'urutan' => ''
             ];
             $this->view('team/add', $data);
@@ -70,10 +68,9 @@ class Team extends Controller {
             $data = [
                 'id' => $id,
                 'nama' => trim($_POST['nama']),
-                'posisi' => trim($_POST['posisi']),
-                'foto_path' => trim($_POST['foto_path']),
-                'link_linkedin' => trim($_POST['link_linkedin']),
-                'link_instagram' => trim($_POST['link_instagram']),
+                'jabatan' => trim($_POST['jabatan']),
+                'url_foto' => trim($_POST['url_foto']),
+                'kutipan' => trim($_POST['kutipan']),
                 'urutan' => (int)trim($_POST['urutan'])
             ];
 
@@ -89,10 +86,9 @@ class Team extends Controller {
                 'title' => 'Edit Anggota Tim',
                 'id' => $id,
                 'nama' => $item->nama,
-                'posisi' => $item->posisi,
-                'foto_path' => $item->foto_path,
-                'link_linkedin' => $item->link_linkedin,
-                'link_instagram' => $item->link_instagram,
+                'jabatan' => $item->jabatan,
+                'url_foto' => $item->url_foto,
+                'kutipan' => $item->kutipan,
                 'urutan' => $item->urutan
             ];
             $this->view('team/edit', $data);

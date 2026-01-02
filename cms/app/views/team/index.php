@@ -13,7 +13,7 @@
                 <tr>
                     <th>Urutan</th>
                     <th>Nama & Posisi</th>
-                    <th>Social Media</th>
+                    <th>Kutipan</th>
                     <th>Foto</th>
                     <th>Actions</th>
                 </tr>
@@ -33,21 +33,16 @@
                     <td>
                         <div class="d-flex flex-column">
                             <span class="fw-bold"><?php echo $row->nama; ?></span>
-                            <small class="text-muted"><?php echo $row->posisi; ?></small>
+                            <small class="text-muted"><?php echo $row->jabatan; ?></small>
                         </div>
                     </td>
                     <td>
-                        <?php if($row->link_linkedin): ?>
-                            <a href="<?php echo $row->link_linkedin; ?>" target="_blank" class="text-secondary me-2"><i class="bx bxl-linkedin-square fs-4"></i></a>
-                        <?php endif; ?>
-                        <?php if($row->link_instagram): ?>
-                            <a href="<?php echo $row->link_instagram; ?>" target="_blank" class="text-secondary"><i class="bx bxl-instagram-alt fs-4"></i></a>
-                        <?php endif; ?>
+                        <small class="text-muted d-block text-truncate" style="max-width: 150px;"><?php echo $row->kutipan; ?></small>
                     </td>
                     <td>
-                        <?php if($row->foto_path): ?>
+                        <?php if($row->url_foto): ?>
                             <div class="avatar avatar-sm">
-                                <img src="<?php echo $row->foto_path; ?>" alt="Foto" class="rounded-circle">
+                                <img src="<?php echo $row->url_foto; ?>" alt="Foto" class="rounded-circle">
                             </div>
                         <?php else: ?>
                             <span class="badge bg-label-secondary">No Img</span>
@@ -63,10 +58,10 @@
                                     data-bs-toggle="modal" 
                                     data-bs-target="#viewModal"
                                     data-nama="<?php echo htmlspecialchars($row->nama); ?>"
-                                    data-posisi="<?php echo htmlspecialchars($row->posisi); ?>"
-                                    data-foto="<?php echo htmlspecialchars($row->foto_path); ?>"
-                                    data-linkedin="<?php echo htmlspecialchars($row->link_linkedin); ?>"
-                                    data-instagram="<?php echo htmlspecialchars($row->link_instagram); ?>"
+                                    data-nama="<?php echo htmlspecialchars($row->nama); ?>"
+                                    data-jabatan="<?php echo htmlspecialchars($row->jabatan); ?>"
+                                    data-foto="<?php echo htmlspecialchars($row->url_foto); ?>"
+                                    data-kutipan="<?php echo htmlspecialchars($row->kutipan); ?>"
                                 >
                                     <i class="bx bx-show-alt me-1"></i> View
                                 </a>
@@ -135,16 +130,10 @@
             <div class="modal-body text-center">
                 <img id="viewFoto" src="" class="rounded-circle mb-3 border shadow-sm" style="width: 120px; height: 120px; object-fit: cover; display: none;">
                 <h3 id="viewNama" class="fw-bold mb-1"></h3>
-                <h5 id="viewPosisi" class="text-primary mb-3"></h5>
+                <h5 id="viewJabatan" class="text-primary mb-3"></h5>
+                <p id="viewKutipan" class="text-muted fst-italic"></p>
                 
-                <div class="d-flex justify-content-center gap-2 mt-4">
-                    <a id="viewLinkedin" href="#" target="_blank" class="btn btn-outline-secondary btn-icon" style="display: none;">
-                        <i class="bx bxl-linkedin-square"></i>
-                    </a>
-                    <a id="viewInstagram" href="#" target="_blank" class="btn btn-outline-secondary btn-icon" style="display: none;">
-                        <i class="bx bxl-instagram-alt"></i>
-                    </a>
-                </div>
+                <!-- Social links removed as they are not in DB -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
@@ -181,14 +170,14 @@ document.addEventListener('DOMContentLoaded', function() {
         var button = event.relatedTarget;
         
         var nama = button.getAttribute('data-nama');
-        var posisi = button.getAttribute('data-posisi');
+        var jabatan = button.getAttribute('data-jabatan');
         var foto = button.getAttribute('data-foto');
-        var linkedin = button.getAttribute('data-linkedin');
-        var instagram = button.getAttribute('data-instagram');
+        var kutipan = button.getAttribute('data-kutipan');
 
         var modalBody = viewModal.querySelector('.modal-body');
         modalBody.querySelector('#viewNama').textContent = nama;
-        modalBody.querySelector('#viewPosisi').textContent = posisi;
+        modalBody.querySelector('#viewJabatan').textContent = jabatan;
+        modalBody.querySelector('#viewKutipan').textContent = kutipan;
 
         // Handle Foto
         var imgEl = modalBody.querySelector('#viewFoto');
@@ -197,23 +186,6 @@ document.addEventListener('DOMContentLoaded', function() {
             imgEl.style.display = 'inline-block';
         } else {
             imgEl.style.display = 'none';
-        }
-
-        // Handle Social Links
-        var lnkEl = modalBody.querySelector('#viewLinkedin');
-        if(linkedin) { 
-            lnkEl.href = linkedin; 
-            lnkEl.style.display = 'inline-flex';
-        } else { 
-            lnkEl.style.display = 'none'; 
-        }
-
-        var igEl = modalBody.querySelector('#viewInstagram');
-        if(instagram) { 
-            igEl.href = instagram; 
-            igEl.style.display = 'inline-flex';
-        } else { 
-            igEl.style.display = 'none'; 
         }
     });
 

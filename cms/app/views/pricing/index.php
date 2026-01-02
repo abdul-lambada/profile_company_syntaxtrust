@@ -29,17 +29,17 @@
                 <?php endif; ?>
 
                 <?php foreach($data['items'] as $row) : 
-                    $featuresKey = str_replace(['"', ' '], '', $row->fitur_list_json); // clean for counting
-                    $featCount = count(json_decode($row->fitur_list_json, true) ?? []);
+                    $featuresKey = str_replace(['"', ' '], '', $row->fitur_json ?? ''); // clean for counting
+                    $featCount = count(json_decode($row->fitur_json ?? '[]', true) ?? []);
                 ?>
                 <tr>
                     <td><span class="badge bg-label-secondary rounded-pill"><?php echo $row->urutan; ?></span></td>
                     <td>
                         <span class="fw-bold"><?php echo $row->nama_paket; ?></span>
                     </td>
-                    <td><span class="fw-medium text-success"><?php echo $row->harga; ?></span></td>
+                    <td><span class="fw-medium text-success"><?php echo $row->label_harga; ?></span></td>
                     <td>
-                        <?php if($row->is_populer): ?>
+                        <?php if($row->populer): ?>
                             <span class="badge bg-label-warning"><i class="bx bxs-star me-1"></i> Populer</span>
                         <?php else: ?>
                             <span class="badge bg-label-secondary">Standard</span>
@@ -56,10 +56,10 @@
                                     data-bs-toggle="modal" 
                                     data-bs-target="#viewModal"
                                     data-nama="<?php echo htmlspecialchars($row->nama_paket); ?>"
-                                    data-harga="<?php echo htmlspecialchars($row->harga); ?>"
-                                    data-deskripsi="<?php echo htmlspecialchars($row->deskripsi_singkat); ?>"
-                                    data-populer="<?php echo $row->is_populer; ?>"
-                                    data-features='<?php echo $row->fitur_list_json; ?>'
+                                    data-harga="<?php echo htmlspecialchars($row->label_harga); ?>"
+                                    data-deskripsi="<?php echo htmlspecialchars($row->deskripsi); ?>"
+                                    data-populer="<?php echo $row->populer; ?>"
+                                    data-features='<?php echo $row->fitur_json; ?>'
                                 >
                                     <i class="bx bx-show-alt me-1"></i> View
                                 </a>

@@ -16,28 +16,18 @@
                                 <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $data['nama']; ?>" required />
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" for="posisi">Posisi / Jabatan</label>
-                                <input type="text" class="form-control" id="posisi" name="posisi" value="<?php echo $data['posisi']; ?>" required />
+                                <label class="form-label" for="jabatan">Jabatan</label>
+                                <input type="text" class="form-control" id="jabatan" name="jabatan" value="<?php echo $data['jabatan']; ?>" required />
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" for="foto_path">URL Foto</label>
-                                <input type="text" class="form-control" id="foto_path" name="foto_path" value="<?php echo $data['foto_path']; ?>" />
+                                <label class="form-label" for="url_foto">URL Foto</label>
+                                <input type="text" class="form-control" id="url_foto" name="url_foto" value="<?php echo $data['url_foto']; ?>" />
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label class="form-label" for="link_linkedin">Link LinkedIn</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bx bxl-linkedin-square"></i></span>
-                                    <input type="text" class="form-control" id="link_linkedin" name="link_linkedin" value="<?php echo $data['link_linkedin']; ?>" />
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label" for="link_instagram">Link Instagram</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bx bxl-instagram-alt"></i></span>
-                                    <input type="text" class="form-control" id="link_instagram" name="link_instagram" value="<?php echo $data['link_instagram']; ?>" />
-                                </div>
+                                <label class="form-label" for="kutipan">Kutipan</label>
+                                <textarea class="form-control" id="kutipan" name="kutipan" rows="4" required><?php echo $data['kutipan']; ?></textarea>
                             </div>
                              <div class="mb-3">
                                 <label class="form-label" for="urutan">Urutan</label>
