@@ -143,8 +143,8 @@
                         </a>
                     </li>
 
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
+                    <li class="menu-item <?php echo (isset($_GET['url']) && strpos($_GET['url'], 'client_map') !== false) ? 'active' : ''; ?>">
+                        <a href="<?php echo URLROOT; ?>/client_map" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-map-alt"></i>
                             <div data-i18n="Maps">Peta Klien</div>
                         </a>
