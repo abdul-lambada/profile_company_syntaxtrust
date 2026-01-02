@@ -122,8 +122,8 @@
                         </a>
                     </li>
                     
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
+                    <li class="menu-item <?php echo (isset($_GET['url']) && strpos($_GET['url'], 'mobile_app') !== false) ? 'active' : ''; ?>">
+                        <a href="<?php echo URLROOT; ?>/mobile_app" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-mobile"></i>
                             <div data-i18n="MobileApp">Aplikasi Mobile</div>
                         </a>
