@@ -8,7 +8,7 @@
                 <small class="text-muted float-end">Testimonials CMS</small>
             </div>
             <div class="card-body">
-                <form action="<?php echo URLROOT; ?>/testimonials/add" method="POST">
+                <form action="<?php echo URLROOT; ?>/testimonials/add" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
@@ -32,9 +32,9 @@
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label class="form-label" for="url_avatar">URL Avatar / Foto</label>
-                                <input type="text" class="form-control" id="url_avatar" name="url_avatar" placeholder="https://example.com/photo.jpg" />
-                                <div class="form-text">Biarkan kosong jika tidak ada foto.</div>
+                                <label class="form-label" for="avatar_upload">Upload Avatar / Foto</label>
+                                <input type="file" class="form-control" id="avatar_upload" name="avatar_upload" accept="image/*" />
+                                <div class="form-text">Format: JPG, PNG, JPEG. Max: 2MB.</div>
                             </div>
                              <div class="mb-3">
                                 <label class="form-label" for="urutan">Urutan</label>

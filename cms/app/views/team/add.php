@@ -8,7 +8,7 @@
                 <small class="text-muted float-end">Team CMS</small>
             </div>
             <div class="card-body">
-                <form action="<?php echo URLROOT; ?>/team/add" method="POST">
+                <form action="<?php echo URLROOT; ?>/team/add" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
@@ -20,8 +20,9 @@
                                 <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="Contoh: Lead Developer" required />
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" for="url_foto">URL Foto</label>
-                                <input type="text" class="form-control" id="url_foto" name="url_foto" placeholder="https://example.com/photo.jpg" />
+                                <label class="form-label" for="foto_upload">Upload Foto</label>
+                                <input type="file" class="form-control" id="foto_upload" name="foto_upload" accept="image/*" />
+                                <div class="form-text">Format: JPG, PNG, JPEG. Max: 2MB.</div>
                             </div>
                         </div>
                         <div class="col-md-6">

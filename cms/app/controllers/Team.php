@@ -33,15 +33,23 @@ class Team extends Controller {
 
     public function add(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
 
             $data = [
                 'nama' => trim($_POST['nama']),
                 'jabatan' => trim($_POST['jabatan']),
-                'url_foto' => trim($_POST['url_foto']),
+                'url_foto' => '', // Will be filled by upload
                 'kutipan' => trim($_POST['kutipan']),
                 'urutan' => (int)trim($_POST['urutan'])
             ];
+
+             // Handle File Upload
+             if(isset($_FILES['foto_upload']) && $_FILES['foto_upload']['error'] === 0){
+                $uploadResult = $this->handleUpload($_FILES['foto_upload']);
+                if($uploadResult['success']){
+                    $data['url_foto'] = $uploadResult['path'];
+                }
+            }
 
             if($this->model->add($data)){
                 header('location: ' . URLROOT . '/team?status=success');
@@ -63,16 +71,26 @@ class Team extends Controller {
 
     public function edit($id){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
+
+            $existing = $this->model->getById($id);
 
             $data = [
                 'id' => $id,
                 'nama' => trim($_POST['nama']),
                 'jabatan' => trim($_POST['jabatan']),
-                'url_foto' => trim($_POST['url_foto']),
+                'url_foto' => $existing->url_foto,
                 'kutipan' => trim($_POST['kutipan']),
                 'urutan' => (int)trim($_POST['urutan'])
             ];
+
+             // Handle File Upload
+             if(isset($_FILES['foto_upload']) && $_FILES['foto_upload']['error'] === 0){
+                $uploadResult = $this->handleUpload($_FILES['foto_upload']);
+                if($uploadResult['success']){
+                    $data['url_foto'] = $uploadResult['path'];
+                }
+            }
 
             if($this->model->update($data)){
                 header('location: ' . URLROOT . '/team?status=success');
@@ -92,6 +110,28 @@ class Team extends Controller {
                 'urutan' => $item->urutan
             ];
             $this->view('team/edit', $data);
+        }
+    }
+
+    private function handleUpload($file){
+        $targetDir = dirname(dirname(dirname(__FILE__))) . '/public/uploads/team/';
+        
+        if (!file_exists($targetDir)) {
+            mkdir($targetDir, 0777, true);
+        }
+
+        $fileName = time() . '_' . basename($file['name']);
+        $targetFile = $targetDir . $fileName;
+        
+        $check = getimagesize($file["tmp_name"]);
+        if($check === false) {
+             return ['success' => false, 'msg' => 'File is not an image.'];
+        }
+
+        if (move_uploaded_file($file["tmp_name"], $targetFile)) {
+            return ['success' => true, 'path' => URLROOT . '/public/uploads/team/' . $fileName];
+        } else {
+            return ['success' => false, 'msg' => 'Error uploading file.'];
         }
     }
 

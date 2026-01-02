@@ -8,7 +8,7 @@
                 <small class="text-muted float-end">Testimonials CMS</small>
             </div>
             <div class="card-body">
-                <form action="<?php echo URLROOT; ?>/testimonials/edit/<?php echo $data['id']; ?>" method="POST">
+                <form action="<?php echo URLROOT; ?>/testimonials/edit/<?php echo $data['id']; ?>" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
@@ -32,9 +32,18 @@
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label class="form-label" for="url_avatar">URL Avatar / Foto</label>
-                                <input type="text" class="form-control" id="url_avatar" name="url_avatar" value="<?php echo $data['url_avatar']; ?>" />
+                                <label class="form-label" for="avatar_upload">Upload Avatar / Foto</label>
+                                <input type="file" class="form-control" id="avatar_upload" name="avatar_upload" accept="image/*" />
+                                <div class="form-text">Biarkan kosong jika tidak ingin mengubah foto.</div>
                             </div>
+                            <?php if(!empty($data['url_avatar'])): ?>
+                            <div class="mb-3">
+                                <label class="form-label">Foto Saat Ini:</label>
+                                <div class="d-block">
+                                    <img src="<?php echo $data['url_avatar']; ?>" alt="Avatar" class="rounded-circle border shadow-sm" style="width: 80px; height: 80px; object-fit: cover;">
+                                </div>
+                            </div>
+                            <?php endif; ?>
                              <div class="mb-3">
                                 <label class="form-label" for="urutan">Urutan</label>
                                 <input type="number" class="form-control" id="urutan" name="urutan" value="<?php echo $data['urutan']; ?>" required />
