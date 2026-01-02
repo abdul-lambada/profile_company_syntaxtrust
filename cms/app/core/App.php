@@ -8,12 +8,19 @@ class App {
         $url = $this->getUrl();
 
         // Look in controllers for first value
-        if(file_exists('app/controllers/' . ucwords($url[0]) . '.php')){
+        // Convert snake_case to PascalCase (e.g. mobile_app -> MobileApp)
+        $controllerName = str_replace('_', '', ucwords($url[0], '_')); // PHP 8 approach or use generic logic
+        
+        // Versi lebih kompatibel:
+        $controllerName = str_replace(' ', '', ucwords(str_replace('_', ' ', $url[0])));
+
+        if(file_exists('app/controllers/' . $controllerName . '.php')){
             // If exists, set as controller
-            $this->currentController = ucwords($url[0]);
+            $this->currentController = $controllerName;
             // Unset 0 Index
             unset($url[0]);
         }
+
 
         // Require the controller
         require_once 'app/controllers/' . $this->currentController . '.php';

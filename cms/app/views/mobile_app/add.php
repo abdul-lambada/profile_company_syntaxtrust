@@ -12,8 +12,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label class="form-label" for="judul_badge">Label Badge</label>
-                                <input type="text" class="form-control" id="judul_badge" name="judul_badge" placeholder="Contoh: Mobile Apps" required />
+                                <label class="form-label" for="label_badge">Label Badge</label>
+                                <input type="text" class="form-control" id="label_badge" name="label_badge" placeholder="Contoh: Mobile Apps" required />
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="judul_utama">Judul Utama</label>

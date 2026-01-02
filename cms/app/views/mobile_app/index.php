@@ -34,7 +34,7 @@
                 <tr>
                     <td><i class="bx bx-hash"></i> <strong><?php echo $row->id; ?></strong></td>
                     <td><span class="fw-medium"><?php echo $row->judul_utama; ?></span></td>
-                    <td><span class="badge bg-label-primary"><?php echo $row->judul_badge; ?></span></td>
+                    <td><span class="badge bg-label-primary"><?php echo $row->label_badge; ?></span></td>
                     <td><span class="badge bg-secondary"><?php echo $featCount; ?> Items</span></td>
                     <td>
                         <div class="dropdown">
@@ -45,7 +45,7 @@
                                 <a class="dropdown-item" href="javascript:void(0);"
                                     data-bs-toggle="modal" 
                                     data-bs-target="#viewModal"
-                                    data-badge="<?php echo htmlspecialchars($row->judul_badge); ?>"
+                                    data-badge="<?php echo htmlspecialchars($row->label_badge); ?>"
                                     data-judul="<?php echo htmlspecialchars($row->judul_utama); ?>"
                                     data-deskripsi="<?php echo htmlspecialchars($row->deskripsi); ?>"
                                     data-img="<?php echo htmlspecialchars($row->gambar_mockup); ?>"

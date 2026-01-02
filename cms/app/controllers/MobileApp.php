@@ -48,7 +48,7 @@ class MobileApp extends Controller {
             $jsonStoreLinks = json_encode($storeLinks, JSON_UNESCAPED_UNICODE);
 
             $data = [
-                'judul_badge' => trim($_POST['judul_badge']),
+                'label_badge' => trim($_POST['label_badge']),
                 'judul_utama' => trim($_POST['judul_utama']),
                 'deskripsi' => trim($_POST['deskripsi']),
                 'gambar_mockup' => trim($_POST['gambar_mockup']),
@@ -64,7 +64,7 @@ class MobileApp extends Controller {
         } else {
             $data = [
                 'title' => 'Tambah Konten Mobile App',
-                'judul_badge' => '',
+                'label_badge' => '',
                 'judul_utama' => '',
                 'deskripsi' => '',
                 'gambar_mockup' => '',
@@ -92,7 +92,7 @@ class MobileApp extends Controller {
 
             $data = [
                 'id' => $id,
-                'judul_badge' => trim($_POST['judul_badge']),
+                'label_badge' => trim($_POST['label_badge']),
                 'judul_utama' => trim($_POST['judul_utama']),
                 'deskripsi' => trim($_POST['deskripsi']),
                 'gambar_mockup' => trim($_POST['gambar_mockup']),
@@ -114,7 +114,7 @@ class MobileApp extends Controller {
             $data = [
                 'title' => 'Edit Konten Mobile App',
                 'id' => $id,
-                'judul_badge' => $app->judul_badge,
+                'label_badge' => $app->label_badge,
                 'judul_utama' => $app->judul_utama,
                 'deskripsi' => $app->deskripsi,
                 'gambar_mockup' => $app->gambar_mockup,

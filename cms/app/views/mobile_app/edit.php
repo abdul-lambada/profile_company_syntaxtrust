@@ -12,8 +12,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label class="form-label" for="judul_badge">Label Badge</label>
-                                <input type="text" class="form-control" id="judul_badge" name="judul_badge" value="<?php echo $data['judul_badge']; ?>" required />
+                                <label class="form-label" for="label_badge">Label Badge</label>
+                                <input type="text" class="form-control" id="label_badge" name="label_badge" value="<?php echo $data['label_badge']; ?>" required />
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="judul_utama">Judul Utama</label>
