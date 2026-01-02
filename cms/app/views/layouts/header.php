@@ -136,8 +136,8 @@
                         </a>
                     </li>
 
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
+                    <li class="menu-item <?php echo (isset($_GET['url']) && strpos($_GET['url'], 'stats') !== false) ? 'active' : ''; ?>">
+                        <a href="<?php echo URLROOT; ?>/stats" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-stats"></i>
                             <div data-i18n="Stats">Statistik</div>
                         </a>
