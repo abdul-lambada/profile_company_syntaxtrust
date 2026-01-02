@@ -150,29 +150,29 @@
                         </a>
                     </li>
 
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
+                    <li class="menu-item <?php echo (isset($_GET['url']) && strpos($_GET['url'], 'testimonials') !== false) ? 'active' : ''; ?>">
+                        <a href="<?php echo URLROOT; ?>/testimonials" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-chat"></i>
                             <div data-i18n="Testimonials">Testimoni</div>
                         </a>
                     </li>
 
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
+                    <li class="menu-item <?php echo (isset($_GET['url']) && strpos($_GET['url'], 'pricing') !== false) ? 'active' : ''; ?>">
+                        <a href="<?php echo URLROOT; ?>/pricing" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-dollar"></i>
                             <div data-i18n="Pricing">Paket Harga</div>
                         </a>
                     </li>
                     
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
+                    <li class="menu-item <?php echo (isset($_GET['url']) && strpos($_GET['url'], 'team') !== false) ? 'active' : ''; ?>">
+                        <a href="<?php echo URLROOT; ?>/team" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-group"></i>
                             <div data-i18n="Team">Tim Kami</div>
                         </a>
                     </li>
                     
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
+                    <li class="menu-item <?php echo (isset($_GET['url']) && strpos($_GET['url'], 'faq') !== false) ? 'active' : ''; ?>">
+                        <a href="<?php echo URLROOT; ?>/faq" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-question-mark"></i>
                             <div data-i18n="FAQ">FAQ</div>
                         </a>
