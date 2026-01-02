@@ -108,8 +108,8 @@
                         </a>
                     </li>
 
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
+                    <li class="menu-item <?php echo (isset($_GET['url']) && strpos($_GET['url'], 'features') !== false) ? 'active' : ''; ?>">
+                        <a href="<?php echo URLROOT; ?>/features" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-star"></i>
                             <div data-i18n="Features">Fitur Unggulan</div>
                         </a>
