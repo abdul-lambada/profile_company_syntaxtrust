@@ -218,7 +218,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block">Admin SIKES</span>
+                                                    <span class="fw-semibold d-block"><?php echo $_SESSION['user_name'] ?? 'Admin SIKES'; ?></span>
                                                     <small class="text-muted">Administrator</small>
                                                 </div>
                                             </div>
@@ -243,7 +243,7 @@
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="auth-login.html">
+                                        <a class="dropdown-item" href="<?php echo URLROOT; ?>/login/logout">
                                             <i class="bx bx-power-off me-2"></i>
                                             <span class="align-middle">Log Out</span>
                                         </a>
