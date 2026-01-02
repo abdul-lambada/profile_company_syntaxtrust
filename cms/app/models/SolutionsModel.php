@@ -26,10 +26,10 @@ class SolutionsModel {
     }
 
     public function add($data){
-        $this->db->query("INSERT INTO konten_solusi (label_kategori, judul, deskripsi, gambar_path, peran_list_json) VALUES (:label_kategori, :judul, :deskripsi, :gambar_path, :peran_list_json)");
+        $this->db->query("INSERT INTO konten_solusi (label_kategori, judul_utama, deskripsi, gambar_path, peran_list_json) VALUES (:label_kategori, :judul_utama, :deskripsi, :gambar_path, :peran_list_json)");
         
         $this->db->bind(':label_kategori', $data['label_kategori']);
-        $this->db->bind(':judul', $data['judul']);
+        $this->db->bind(':judul_utama', $data['judul_utama']);
         $this->db->bind(':deskripsi', $data['deskripsi']);
         $this->db->bind(':gambar_path', $data['gambar_path']);
         $this->db->bind(':peran_list_json', $data['peran_list_json']);
@@ -42,11 +42,11 @@ class SolutionsModel {
     }
 
     public function update($data){
-        $this->db->query("UPDATE konten_solusi SET label_kategori = :label_kategori, judul = :judul, deskripsi = :deskripsi, gambar_path = :gambar_path, peran_list_json = :peran_list_json WHERE id = :id");
+        $this->db->query("UPDATE konten_solusi SET label_kategori = :label_kategori, judul_utama = :judul_utama, deskripsi = :deskripsi, gambar_path = :gambar_path, peran_list_json = :peran_list_json WHERE id = :id");
         
         $this->db->bind(':id', $data['id']);
         $this->db->bind(':label_kategori', $data['label_kategori']);
-        $this->db->bind(':judul', $data['judul']);
+        $this->db->bind(':judul_utama', $data['judul_utama']);
         $this->db->bind(':deskripsi', $data['deskripsi']);
         $this->db->bind(':gambar_path', $data['gambar_path']);
         $this->db->bind(':peran_list_json', $data['peran_list_json']);

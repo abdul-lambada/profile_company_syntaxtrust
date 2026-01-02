@@ -36,7 +36,7 @@
                 <tr>
                     <td><i class="bx bx-hash"></i> <strong><?php echo $row->id; ?></strong></td>
                     <td><span class="badge bg-label-info"><?php echo $row->label_kategori; ?></span></td>
-                    <td><span class="fw-medium"><?php echo $row->judul; ?></span></td>
+                    <td><span class="fw-medium"><?php echo $row->judul_utama; ?></span></td>
                     <td><span class="badge bg-secondary"><?php echo $roleCount; ?> Role</span></td>
                     <td>
                         <div class="dropdown">
@@ -48,7 +48,7 @@
                                     data-bs-toggle="modal" 
                                     data-bs-target="#viewModal"
                                     data-label="<?php echo htmlspecialchars($row->label_kategori); ?>"
-                                    data-judul="<?php echo htmlspecialchars($row->judul); ?>"
+                                    data-judul="<?php echo htmlspecialchars($row->judul_utama); ?>"
                                     data-deskripsi="<?php echo htmlspecialchars($row->deskripsi); ?>"
                                     data-img="<?php echo htmlspecialchars($row->gambar_path); ?>"
                                     data-roles='<?php echo $row->peran_list_json; ?>'

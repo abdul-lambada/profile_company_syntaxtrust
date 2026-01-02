@@ -49,7 +49,7 @@ class Solutions extends Controller {
 
             $data = [
                 'label_kategori' => trim($_POST['label_kategori']),
-                'judul' => trim($_POST['judul']),
+                'judul_utama' => trim($_POST['judul']),
                 'deskripsi' => trim($_POST['deskripsi']),
                 'gambar_path' => trim($_POST['gambar_path']),
                 'peran_list_json' => $jsonPeran,
@@ -66,7 +66,7 @@ class Solutions extends Controller {
             $data = [
                 'title' => 'Tambah Solusi',
                 'label_kategori' => '',
-                'judul' => '',
+                'judul_utama' => '',
                 'deskripsi' => '',
                 'gambar_path' => '',
                 'peran_list' => [] // Empty for add view
@@ -90,7 +90,7 @@ class Solutions extends Controller {
             $data = [
                 'id' => $id,
                 'label_kategori' => trim($_POST['label_kategori']),
-                'judul' => trim($_POST['judul']),
+                'judul_utama' => trim($_POST['judul']),
                 'deskripsi' => trim($_POST['deskripsi']),
                 'gambar_path' => trim($_POST['gambar_path']),
                 'peran_list_json' => $jsonPeran,
@@ -114,7 +114,7 @@ class Solutions extends Controller {
                 'title' => 'Edit Solusi',
                 'id' => $id,
                 'label_kategori' => $solution->label_kategori,
-                'judul' => $solution->judul,
+                'judul_utama' => $solution->judul_utama,
                 'deskripsi' => $solution->deskripsi,
                 'gambar_path' => $solution->gambar_path,
                 'peran_list' => $peranList
