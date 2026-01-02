@@ -129,8 +129,8 @@
                         </a>
                     </li>
 
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
+                    <li class="menu-item <?php echo (isset($_GET['url']) && strpos($_GET['url'], 'how_it_works') !== false) ? 'active' : ''; ?>">
+                        <a href="<?php echo URLROOT; ?>/how_it_works" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-list-ol"></i>
                             <div data-i18n="HowItWorks">Cara Kerja</div>
                         </a>
