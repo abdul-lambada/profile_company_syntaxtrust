@@ -101,8 +101,8 @@
                         </a>
                     </li>
                     
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
+                    <li class="menu-item <?php echo (isset($_GET['url']) && strpos($_GET['url'], 'badges') !== false) ? 'active' : ''; ?>">
+                        <a href="<?php echo URLROOT; ?>/badges" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-medal"></i>
                             <div data-i18n="Badges">Lencana & Mitra</div>
                         </a>
