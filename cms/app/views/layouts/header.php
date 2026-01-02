@@ -115,8 +115,8 @@
                         </a>
                     </li>
 
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
+                    <li class="menu-item <?php echo (isset($_GET['url']) && strpos($_GET['url'], 'solutions') !== false) ? 'active' : ''; ?>">
+                        <a href="<?php echo URLROOT; ?>/solutions" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-check-shield"></i>
                             <div data-i18n="Solutions">Solusi & Akses</div>
                         </a>
